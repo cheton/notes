@@ -1,8 +1,56 @@
+## Index
+
+* [No Gutter Column Trick for Bootstrap](https://github.com/cheton/blog/blob/master/Bootstrap.md#no-gutter-column-trick-for-bootstrap)
+* [Bootstrap 3 Responsive Columns of Same Height](https://github.com/cheton/blog/blob/master/Bootstrap.md#bootstrap-3-responsive-columns-of-same-height)
+
+## No Gutter Column Trick for Bootstrap
+
+Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
+
+### HTML
+```html
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+  </div>
+</div>
+```
+
+### CSS
+```css
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+```
+
+### CSS Preprocessor
+```stylus
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+```
+
 ## Bootstrap 3 Responsive Columns of Same Height
 
 Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-columns-of-same-height
 
-### The Markup
+### HTML
 ```html
 <div class="row">
   <div class="row-sm-height">
@@ -32,7 +80,7 @@ Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsi
 </div>
 ```
 
-### The CSS
+### CSS
 ```css
 .row-height {
   display: table;
