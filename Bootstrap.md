@@ -7,7 +7,7 @@
 
 Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 
-### HTML
+#### HTML
 ```html
 <div class="container">
   <div class="row no-gutters">
@@ -19,7 +19,7 @@ Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 </div>
 ```
 
-### CSS
+#### CSS
 ```css
 .row.no-gutters {
   margin-right: 0;
@@ -32,7 +32,7 @@ Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 }
 ```
 
-### CSS Preprocessor
+#### CSS Preprocessor
 ```stylus
 .row.no-gutters {
   margin-right: 0;
@@ -50,7 +50,7 @@ Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 
 Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-columns-of-same-height
 
-### HTML
+#### HTML
 ```html
 <div class="row">
   <div class="row-sm-height">
@@ -80,7 +80,7 @@ Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsi
 </div>
 ```
 
-### CSS
+#### CSS
 ```css
 .row-height {
   display: table;
