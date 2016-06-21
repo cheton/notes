@@ -213,34 +213,34 @@ Source: https://coderwall.com/p/0jezca/vertical-spacing-for-bootstrap-columns
 #### Usage
 ```html
 <div class="row row-grid">
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
 </div>
 ```
 
 #### CSS
 ```css
 .row.row-grid [class*="col-"] + [class*="col-"] {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 .row-grid + .row-grid {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 @media (min-width: 1200px) {
-    .row.row-grid [class*="col-lg-"] + [class*="col-lg-"] {
-        margin-top: 0;
-    }
+  .row.row-grid [class*="col-lg-"] + [class*="col-lg-"] {
+    margin-top: 0;
+  }
 }
 @media (min-width: 992px) {
-    .row.row-grid [class*="col-md-"] + [class*="col-md-"] {
-        margin-top: 0;
-    }
+  .row.row-grid [class*="col-md-"] + [class*="col-md-"] {
+    margin-top: 0;
+  }
 }
 @media (min-width: 768px) {
-    .row.row-grid [class*="col-sm-"] + [class*="col-sm-"] {
-        margin-top: 0;
-    }
+  .row.row-grid [class*="col-sm-"] + [class*="col-sm-"] {
+    margin-top: 0;
+  }
 }
 ```
