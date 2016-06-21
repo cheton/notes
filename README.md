@@ -1,4 +1,4 @@
-# Notes
+# notes
 
 ## Bootstrap
 * [No Gutter Column Trick for Bootstrap](https://github.com/cheton/notes/blob/master/Bootstrap.md#no-gutter-column-trick-for-bootstrap)
