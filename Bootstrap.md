@@ -2,12 +2,13 @@
 
 * [No Gutter Column Trick for Bootstrap](https://github.com/cheton/notes/blob/master/Bootstrap.md#no-gutter-column-trick-for-bootstrap)
 * [Bootstrap 3 Responsive Columns of Same Height](https://github.com/cheton/notes/blob/master/Bootstrap.md#bootstrap-3-responsive-columns-of-same-height)
+* [Vertical Spacing for Bootstrap Columns](https://github.com/cheton/notes/blob/master/Bootstrap.md#vertical-spacing-for-bootstrap-columns)
 
 ## No Gutter Column Trick for Bootstrap
 
 Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 
-#### HTML
+#### Usage
 ```html
 <div class="container">
   <div class="row no-gutters">
@@ -50,7 +51,7 @@ Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 
 Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-columns-of-same-height
 
-#### HTML
+#### Usage
 ```html
 <div class="row">
   <div class="row-sm-height">
@@ -202,5 +203,44 @@ Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsi
   .col-lg-bottom {
     vertical-align: bottom;
   }
+}
+```
+
+## Vertical Spacing for Bootstrap Columns
+
+Source: https://coderwall.com/p/0jezca/vertical-spacing-for-bootstrap-columns
+
+#### Usage
+```html
+<div class="row row-grid">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+</div>
+```
+
+#### CSS
+```css
+.row.row-grid [class*="col-"] + [class*="col-"] {
+    margin-top: 15px;
+}
+.row-grid + .row-grid {
+    margin-top: 15px;
+}
+
+@media (min-width: 1200px) {
+    .row.row-grid [class*="col-lg-"] + [class*="col-lg-"] {
+        margin-top: 0;
+    }
+}
+@media (min-width: 992px) {
+    .row.row-grid [class*="col-md-"] + [class*="col-md-"] {
+        margin-top: 0;
+    }
+}
+@media (min-width: 768px) {
+    .row.row-grid [class*="col-sm-"] + [class*="col-sm-"] {
+        margin-top: 0;
+    }
 }
 ```
