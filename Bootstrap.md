@@ -10,13 +10,11 @@ Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 
 #### Usage
 ```html
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
-    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
-    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
-    <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
-  </div>
+<div class="row no-gutters">
+  <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+  <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+  <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
+  <div class="col-xs-6 col-sm-3"><img src="http://placekitten.com/g/600"></div>
 </div>
 ```
 
