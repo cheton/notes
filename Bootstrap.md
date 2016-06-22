@@ -1,10 +1,9 @@
-## Index
-
+## Bootstrap Grid System
 * [No Gutter Column Trick for Bootstrap](https://github.com/cheton/notes/blob/master/Bootstrap.md#no-gutter-column-trick-for-bootstrap)
 * [Bootstrap 3 Responsive Columns of Same Height](https://github.com/cheton/notes/blob/master/Bootstrap.md#bootstrap-3-responsive-columns-of-same-height)
 * [Vertical Spacing for Bootstrap Columns](https://github.com/cheton/notes/blob/master/Bootstrap.md#vertical-spacing-for-bootstrap-columns)
 
-## No Gutter Column Trick for Bootstrap
+### No Gutter Column Trick for Bootstrap
 
 Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 
@@ -45,7 +44,7 @@ Source: http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/
 }
 ```
 
-## Bootstrap 3 Responsive Columns of Same Height
+### Bootstrap 3 Responsive Columns of Same Height
 
 Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-columns-of-same-height
 
@@ -204,7 +203,7 @@ Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsi
 }
 ```
 
-## Vertical Spacing for Bootstrap Columns
+### Vertical Spacing for Bootstrap Columns
 
 Source: https://coderwall.com/p/0jezca/vertical-spacing-for-bootstrap-columns
 
