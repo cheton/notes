@@ -162,6 +162,7 @@ Source: http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsi
         &.col-sm-bottom {
             vertical-align: bottom;
         }
+    }
 }
 
 @media (min-width: 992px) {
