@@ -484,7 +484,9 @@ Loaders have more methods. Three important ones are:
 * `System.define(name, source, options)` both evaluates the module code in source and registers the result.
 
 ## Using ES6 modules in browsers
+
 An overview of the differences:
+
 |                                              | Scripts        | Modules                      |
 |----------------------------------------------|----------------|------------------------------|
 | HTML element                                 | &lt;script&gt; | &lt;script type="module"&gt; |
@@ -546,6 +548,91 @@ console.log(this === window); // true
 
 ## Details: imports as views on exports
 
+Imports work differently in CommonJS and ES6:
+* In CommonJS, imports are copies of exported values.
+* In ES6, imports are live read-only views on exported values.
+
+### CommonJS - imports are copies of exported values
+
+<i>lib.js</i>
+```js
+var counter = 3;
+function incCounter() {
+    counter++;
+}
+module.exports = {
+    counter: counter, // (A)
+    incCounter: incCounter
+};
+```
+
+<i>main1.js</i>
+```js
+var counter = require('./lib').counter; // (B)
+var incCounter = require('./lib').incCounter;
+
+// The imported value is a (disconnected) copy
+console.log(counter); // 3 incCounter(); console.log(counter); // 3
+
+// The imported value can be changed
+counter++;
+console.log(counter); // 4
+```
+
+If you access the value via the exports object, it is still copied once, on export:
+
+<i>main2.js</i>
+```js
+var lib = require('./lib');
+
+// The imported value is a (disconnected) copy
+console.log(lib.counter); // 3
+lib.incCounter();
+console.log(lib.counter); // 3
+
+// The imported value can be changed
+lib.counter++;
+console.log(lib.counter); // 4
+```
+
+### ES6 - imports are live read-only views on exported values
+
+The following code demostrates how imports are like views:
+
+<i>lib.js</i>
+```js
+export let counter = 3;
+export function incCounter() {
+    counter++;
+}
+```
+
+<i>main1.js</i>
+```js
+import { counter, incCounter } from './lib';
+
+// The imported value `counter` is live
+console.log(counter); // 3
+incCounter();
+console.log(counter); // 4
+
+// The imported value can’t be changed
+counter++; // TypeError
+```
+
+If you import the module object via the asterisk (*), you get the same results:
+
+<i>main2.js</i>
+```js
+import * as lib from './lib';
+
+// The imported value `counter` is live
+console.log(lib.counter); // 3
+lib.incCounter();
+console.log(lib.counter); // 4
+// The imported value can’t be changed
+lib.counter++; // TypeError
+```
 
 ## Design goals for ES6 modules
 
