@@ -197,11 +197,204 @@ console.log(counter); // 4
 ```
 
 ### Support for cyclic dependencies
-CommonJS:
 
+#### Cyclic dependencines in CommonJS
+a.js
+```js
+var b = require('b');
+function foo() {
+    b.bar();
+}
+exports.foo = foo;
+```
+
+b.js
+```js
+var a = require('a'); // (i): b cannot access a.foo in its top level
+function bar() {
+    if (Math.random()) {
+        a.foo(); // (ii): If bar is called afterwards then the method call works
+    }
+}
+exports.bar = bar;
+```
+
+#### Cyclic dependencines in ES6
+a.js
+```js
+import {bar} from 'b'; // (i)
+export function foo() {
+    bar(); // (ii) it can work
+}
+```
+
+b.js
+```js
+import {foo} from 'a'; // (iii)
+export function bar() {
+    if (Math.random()) {
+        foo(); // (iv) it can work
+    }
+}
+```
+
+### Be cafeful with ES6 transpilers
+ES6 transpilers such as Babel compile ES6 modules to ES5. Imports being views on exports is tricky to implement in plain JavaScript. But integrating legacy module systems is even harder. I therefore recommend to keep things simple and to be careful with the more exotic aspects of ES6 modules.
 
 ## Importing and exporting in detail
 
+### Importing styles
+
+* Default import:
+  ```js
+import localName from 'src/my_lib';
+```
+
+* Namespace import: imports the module as an object (with one property per named export)
+  ```js
+import * as my_lib from 'src/my_lib'; 
+```
+
+* Named imports:
+  ```js
+import { name1, name2 } from 'src/my_lib';
+```
+  You can rename named imports:
+  ```js
+// Renaming: import `name1` as `localName1`
+import { name1 as localName1, name2 } from 'src/my_lib'; 
+```
+
+### Exporting styles: inline versus clause
+
+#### Inline
+
+```js
+export var myVar1 = ···;
+export let myVar2 = ···;
+export const MY_CONST = ···;
+export function myFunc() {
+    ···
+}
+export function* myGeneratorFunc() {
+    ···
+}
+export class MyClass {
+    ···
+}
+```
+
+```js
+export default 123;
+export default function (x) {
+    return x
+}
+export default x => x;
+export default class {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+```
+
+#### Clause
+```js
+const MY_CONST = ...;
+function myFunc() {
+   ...
+}
+
+export { MY_CONST, myFunc }
+```
+
+You can also export things under different names:
+```js
+export { MY_CONST as FOO, myFunc };
+```
+
+### Re-exporting
+
+```js
+ // Default exports are ignored by export *
+export * from 'src/other_module';
+
+// Selective exports
+export { foo, bar } from 'src/other_module';
+
+// Renaming: export other_module's foo as myFoo
+export { foo as myFoo, bar } from 'src/other_module';
+
+// Makes the default export of another module foo the default export of the current module
+export { default } from 'foo';
+
+// Makes the named export myFunc of module foo the default export of the current module
+export { myFunc as default } from 'foo';
+```
+
+### All exporting styles
+
+* Re-exporting:
+
+  - Re-export everything (except for the default export):
+    ```js
+    export * from 'src/other_module';
+    ```
+
+  - Re-export via a clause:
+    ```js
+    export { foo as myFoo, bar } from 'src/other_module';
+    ```
+
+* Exporting via a clause:
+  ```js
+  export { MY_CONST as FOO, myFunc };
+  ```
+
+* Inline exports:
+
+  - Variable declarations:
+    ```js
+    export var foo;
+    export let foo;
+    export const foo;
+    ```
+    
+  - Function declarations:
+    ```js
+    export function myFunc() {}
+    export function* myGenFunc() {}
+    ```
+
+  - Class declarations:
+    ```js
+    export class MyClass() {}
+    ```
+
+* Default export:
+
+  - Function declarations (can be anonymous, but only here):
+    ```js
+    export default function myFunc() {}
+    export default function () {}
+    
+    export default function* myGenFunc() {}
+    export default function* () {}
+    ```
+  
+  - Class declarations (can be anonymous, but only here):
+    ```js
+    export default class MyClass() {}
+    export default class () {}
+    ```
+  
+  - Expressions: export values. Note the semicolons at the end.
+    ```js
+    export default foo;
+    export default 'Hello world!';
+    export default 3 * 7;
+    export default (function () {});
+    ```
 
 ## The ES6 module loader API
 
