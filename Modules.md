@@ -6,7 +6,7 @@
 3. [The basics of ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#the-basics-of-es6-modules)
 4. [Importing and exporting in detail](https://github.com/cheton/notes/blob/master/Modules.md#importing-and-exporting-in-detail)
 5. [The ES6 module loader API](https://github.com/cheton/notes/blob/master/Modules.md#the-es6-module-loader-api)
-6. [Using ES6 modules in browsers](https://github.com/cheton/notes/blob/master/Modules.md#using-es6-module-in-browsers)
+6. [Using ES6 modules in browsers](https://github.com/cheton/notes/blob/master/Modules.md#using-es6-modules-in-browsers)
 7. [Details: imports as views on exports](https://github.com/cheton/notes/blob/master/Modules.md#details-imports-as-views-on-exports)
 8. [Design goals for ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#design-goals-for-es6-modules)
 9. [FAQ: modules](https://github.com/cheton/notes/blob/master/Modules.md#faq-modules)
@@ -509,6 +509,8 @@ Scripts are normally loaded or executed synchronously.
 For HTML5, the recommendation is to omit the `type` attribute in `<script>` element.
 
 ### Modules
+
+https://github.com/ModuleLoader/es6-module-loader
 
 There are two options for importing modules:
 * Node.js
