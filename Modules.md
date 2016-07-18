@@ -634,6 +634,21 @@ console.log(lib.counter); // 4
 lib.counter++; // TypeError
 ```
 
+Note that while you can't change the values of imports, you can change the objects that they are referring to. For example:
+
+<i>lib.js</i>
+```js
+export let obj = {};
+```
+
+<i>main.js</i>
+```js
+import { obj } from './lib';
+
+obj.prop = 123; // OK
+obj = {}; // TypeError
+```
+
 ## Design goals for ES6 modules
 
 ### 1. Default exports are favored
