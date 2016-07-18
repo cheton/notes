@@ -14,7 +14,8 @@
 ## Overview
 
 ### Multiple named exports
-lib.js
+
+<i>lib.js</i>
 ```js
 export const sqrt = Math.sqrt;
 export function square(x) {
@@ -25,7 +26,7 @@ export function diag(x, y) {
 }
 ```
 
-main.js
+<i>main.js</i>
 ```js
 import { square, diag } from 'lib';
 console.log(square(11)); // 121
@@ -33,23 +34,24 @@ console.log(diag(4, 3)); // 5
 ```
 
 ### Single default export
-myFunc.js
+
+<i>myFunc.js</i>
 ```js
 export default function () { ··· } // no semicolon!
 ```
 
-MyClass.js
+<i>MyClass.js</i>
 ```js
 export default class { ··· } // no semicolon!
 ```
 
-main1.js
+<i>main1.js</i>
 ```js
 import myFunc from 'myFunc';
 myFunc();
 ```
 
-main2.js
+<i>main2.js</i>
 ```js
 import MyClass from 'MyClass';
 let inst = new MyClass();
@@ -91,7 +93,7 @@ The ES6 module standard has two parts:
 ## The basics of ES6 modules
 
 ### Named exports (several per module)
-lib.js
+<i>lib.js</i>
 ```js
 export const sqrt = Math.sqrt;
 export function square(x) {
@@ -102,7 +104,7 @@ export function diag(x, y) {
 }
 ```
 
-main.js
+<i>main.js</i>
 ```js
 import { square, diag } from 'lib';
 console.log(square(11)); // 121
@@ -117,23 +119,23 @@ console.log(lib.diag(4, 3)); // 5
 ```
 
 ### Default exports (one per module)
-myFunc.js
+<i>myFunc.js</i>
 ```js
 export default function () { ··· } // no semicolon!
 ```
 
-MyClass.js
+<i>MyClass.js</i>
 ```js
 export default class { ··· } // no semicolon!
 ```
 
-main1.js
+<i>main1.js</i>
 ```js
 import myFunc from 'myFunc';
 myFunc();
 ```
 
-main2.js
+<i>main2.js</i>
 ```js
 import MyClass from 'MyClass';
 let inst = new MyClass();
@@ -142,6 +144,7 @@ let inst = new MyClass();
 There are two styles of default exports:
 
 #### Labels for declarations
+
 ```js
 export default function foo() {} // no semicolon!
 export default class Bar {} // no semicolon!
@@ -150,7 +153,9 @@ export default class {} // no semicolon!
 ```
 
 #### Direct exports of values (produced by expressions)
+
 The values are produced via expressions:
+
 ```js
 export default 'abc';
 export default foo();
@@ -160,6 +165,7 @@ export default 5 * 7;
 ```
 
 Each of these default exports has the following structure:
+
 ```js
 export default «expression»;
 ```
@@ -171,14 +177,17 @@ export { __default__ as default };
 ```
 
 ### Imports are hoisted
+
 Module imports are hoisted (internally moved to the beginning of the current scope):
+
 ```js
 foo();
 import { foo } from 'my_module';
 ```
 
 ### Imports are read-only views on exports
-lib.js
+
+<i>lib.js</i>
 ```js
 export let counter = 3;
 export function incCounter() {
@@ -186,7 +195,7 @@ export function incCounter() {
 }
 ```
 
-main.js
+<i>main.js</i>
 ```js
 import { counter, incCounter } from './lib';
 
@@ -199,7 +208,8 @@ console.log(counter); // 4
 ### Support for cyclic dependencies
 
 #### Cyclic dependencines in CommonJS
-a.js
+
+<i>a.js</i>
 ```js
 var b = require('b');
 function foo() {
@@ -208,7 +218,7 @@ function foo() {
 exports.foo = foo;
 ```
 
-b.js
+<i>b.js</i>
 ```js
 var a = require('a'); // (i): b cannot access a.foo in its top level
 function bar() {
@@ -220,7 +230,8 @@ exports.bar = bar;
 ```
 
 #### Cyclic dependencines in ES6
-a.js
+
+<i>a.js</i>
 ```js
 import {bar} from 'b'; // (i)
 export function foo() {
@@ -228,7 +239,7 @@ export function foo() {
 }
 ```
 
-b.js
+<i>b.js</i>
 ```js
 import {foo} from 'a'; // (iii)
 export function bar() {
@@ -396,17 +407,232 @@ export { myFunc as default } from 'foo';
     export default (function () {});
     ```
 
+### Named exports and a default export in a module
+
+The pattern is surprisingly common in JavaScript: A library is a single function, but additional services are provided via properties of that function. Examples include jQuery, Underscore.js, and React.
+
+<i>underscore.js</i>
+```js
+export default function (obj) {
+    ···
+}
+export function each(obj, iterator, context) {
+    ···
+}
+export { each as forEach };
+```
+
+<i>main.js</i>
+```js
+import _, { each } from 'underscore';
+```
+
+#### The default export is just another named export
+
+The following two statements are equivalent:
+```js
+import { default as foo } from 'lib'; 
+import foo from 'lib';
+```
+
+The following two modules have the same default export:
+
+<i>module1.js</i>
+```js
+export default function foo() {} // function declaration!
+```
+
+<i>module2.js</i>
+```js
+function foo() {}
+export { foo as default };
+```
+
 ## The ES6 module loader API
 
+In addition to the declarative syntax for working with modules, there is also a programmatic API that allows you to:
+* Programmatically work with modules
+* Configure module loading
+
+
+### Loader method: importing modules
+
+You can progtammatically import a module, via an API based on Promises:
+```js
+System.import('some_module')
+    .then(some_module => {
+        // Use some_module
+    })
+    .catch(error => {
+    });
+```
+
+`System.import` retrieves a single module, you can use `Promise.all()` to import several modules:
+```js
+Promise.all(['module1', 'module2', 'module3'].map(x => System.import(x)))
+    .then(([module1, module2, module3]) => {
+        // Use module1, module2, module3
+    });
+```
+
+### More loader methods
+
+Loaders have more methods. Three important ones are:
+* `System.module(source, options)` evaluates the JavaScript code in source to a module.
+* `System.set(name, module)` is for registering a module.
+* `System.define(name, source, options)` both evaluates the module code in source and registers the result.
 
 ## Using ES6 modules in browsers
+An overview of the differences:
+|                                              | Scripts        | Modules                      |
+|----------------------------------------------|----------------|------------------------------|
+| HTML element                                 | &lt;script&gt; | &lt;script type="module"&gt; |
+| Top-level variables are                      | global         | local to module              |
+| Value of `this` at top level                 | `window`       | `undefined`                  |
+| Executed                                     | synchronously  | asynchronously               |
+| Import declaratively (`import` statement)    | no             | yes                          |
+| Import programmatically (Promised-based API) | yes            | yes                          |
+| File extension                               | `.js`          | `.js`                        |
 
+### Scripts
+
+Scripts are normally loaded or executed synchronously.
+
+```html
+<script type="text/javascript">
+</script>
+```
+
+For HTML5, the recommendation is to omit the `type` attribute in `<script>` element.
+
+### Modules
+
+There are two options for importing modules:
+* Node.js
+  Load modules synchronously, while the body is executed. 
+* AMD modules
+  Load all modules asynchronously, before the body is executed. It's the best option for browsers, because modules are loaded over the Internet.
+
+ES6 gives you the best of both worlds: The synchronous syntax of Node.js plus the asynchronous loading of AMD. To make both possible, ES6 modules syntactically less flexible than Node.js modules: Imports and exports must happen at the top level. They can't be conditional, either.
+
+Modules can be used from browsers via a new variant of the `<script>` element that is completely asynchronous:
+```html
+<script type="module">
+import $ from 'lib/jquery';
+var x = 123;
+
+// The current scope is not global
+console.log('$' in window); // false
+console.log('x' in window); // false
+
+// `this` still refers to the global object
+console.log(this === window); // true
+</script>
+```
+
+### Bundling
+
+* HTTP/2: will allow multiple requests per TCP connection, which makes bundling unnecessary. You can then incrementally update your application, because if a single module changes, browsers don't have to download the complete bundle, again.
+
+* Packages: Additionally, W3C is working on a standard for "Packaging on the Web". The idea is to put a whole directory into a package. Then this package URL:
+  ```
+  http://example.org/downloads/editor.pack#url=/root.html;fragment=colophon
+  ```
+  is equivalent to the following normal URL, if the package were unpacked into the root of the web server:
+  ```
+  http://example.org/downloads/root.html#colophon
+  ```
 
 ## Details: imports as views on exports
 
 
 ## Design goals for ES6 modules
 
+### Default exports are favored
+
+### Static module structure
+
+In current JavaScript module systems, you have to execute the code in order to find out what the imports and exports are.
+
+In this example, you have to run the code to find out what it imports:
+```js
+var my_lib; if (Math.random()) {
+    my_lib = require('foo');
+} else {
+    my_lib = require('bar');
+}
+```
+
+In this example, you have to run the code to find out what it exports:
+```js
+if (Math.random()) {
+    exports.baz = ···;
+}
+```
+
+ES6 gives you less flexibility, it forces you to be static. As a result, you get several benefits, including:
+- faster lookup
+- variable checking
+- ready for macros
+- ready for types
+- supporting other languages
+
+### Support for synchronous and asynchronous loading
+
+ES6 syntax is well suited for synchronous loading, asynchronous loading is enabled by its static structure: Because you can statically determine all imports, and load them before evaluating the body of the module.
+
+### Support for cyclic dependencies between modules
+
+Cyclic dependencies are not inherently evil. Especially for objects, you sometimes even want this kind of dependency. For example, in some trees likes DOM documents, parents refer to children and children refer back to parents.
 
 ## FAQ: modules
 
+### Can I use a variable to specify from which module I want to import?
+
+Use the programmatic loader API if you want to dynamically determine what module to load:
+```js
+let moduleSpecifier = 'module_' + Math.random();
+System.import(moduleSpecifier)
+    .then(the_module => {
+        // Use the_module
+    });
+```
+
+### Can I import a module conditionally or on demand?
+
+Use the programmatic loader API if you want to load a module conditionally or on demand:
+```js
+if (Math.random()) {
+    System.import('some_module')
+        .then(some_module => {
+            // Use some_module
+        })
+}
+```
+
+### Can I use destructuring in an import statement?
+
+No you can't. You cannot do something like this in an ES6 module:
+```js
+var bar = require('some_module').foo.bar;
+```
+
+### Are named exports necessary? Why not default-export objects?
+
+You can't enfore a static structure via objects and lose all of the associated advantages:
+```js
+export default {
+    foo: 1,
+    bar: 2
+};
+```
+
+### Can I eval() modules?
+
+No, you can't. Syntactically, `eval()` accepts scripts, not modules.
+
+## Benefits of ES6 modules
+
+* No more UMD (Universal Module Definition): UMD is a name for patterns that enable the same file to be used by several module systems (e.g. both CommonJS and AMD). Once ES6 is the only module standard, UMD becomes obsolete.
+* New browser APIs become modules instead of global variables or properties of `navigator`.
+* No more objects-as-namespaces: Objects such as Math and JSON serve as namespaces for functions in ES5. In the future, such functionality can be provided via modules.
