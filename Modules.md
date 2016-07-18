@@ -460,6 +460,8 @@ In addition to the declarative syntax for working with modules, there is also a 
 
 You can progtammatically import a module, via an API based on Promises:
 ```js
+import { System } from 'es6-module-loader';
+
 System.import('some_module')
     .then(some_module => {
         // Use some_module
