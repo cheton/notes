@@ -549,9 +549,9 @@ console.log(this === window); // true
 
 ## Design goals for ES6 modules
 
-### Default exports are favored
+### 1. Default exports are favored
 
-### Static module structure
+### 2. Static module structure
 
 In current JavaScript module systems, you have to execute the code in order to find out what the imports and exports are.
 
@@ -578,11 +578,11 @@ ES6 gives you less flexibility, it forces you to be static. As a result, you get
 - ready for types
 - supporting other languages
 
-### Support for synchronous and asynchronous loading
+### 3. Support for synchronous and asynchronous loading
 
 ES6 syntax is well suited for synchronous loading, asynchronous loading is enabled by its static structure: Because you can statically determine all imports, and load them before evaluating the body of the module.
 
-### Support for cyclic dependencies between modules
+### 4. Support for cyclic dependencies between modules
 
 Cyclic dependencies are not inherently evil. Especially for objects, you sometimes even want this kind of dependency. For example, in some trees likes DOM documents, parents refer to children and children refer back to parents.
 
@@ -634,6 +634,28 @@ No, you can't. Syntactically, `eval()` accepts scripts, not modules.
 
 ## Benefits of ES6 modules
 
-* No more UMD (Universal Module Definition): UMD is a name for patterns that enable the same file to be used by several module systems (e.g. both CommonJS and AMD). Once ES6 is the only module standard, UMD becomes obsolete.
+* No more [UMD (Universal Module Definition)](https://github.com/umdjs/umd): UMD is a name for patterns that enable the same file to be used by several module systems (e.g. both CommonJS and AMD). Once ES6 is the only module standard, UMD becomes obsolete.
+  ```js
+  (function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports', 'b'], function (exports, b) {
+            factory((root.commonJsStrictGlobal = exports), b);
+        });
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports, require('b'));
+    } else {
+        // Browser globals
+        factory((root.commonJsStrictGlobal = {}), root.b);
+    }
+  }(this, function (exports, b) {
+    //use b in some fashion.
+
+    // attach properties to the exports object to define
+    // the exported module properties.
+    exports.action = function () {};
+  }));
+  ```
 * New browser APIs become modules instead of global variables or properties of `navigator`.
 * No more objects-as-namespaces: Objects such as Math and JSON serve as namespaces for functions in ES5. In the future, such functionality can be provided via modules.
