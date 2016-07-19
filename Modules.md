@@ -665,7 +665,8 @@ In current JavaScript module systems, you have to execute the code in order to f
 
 In this example, you have to run the code to find out what it imports:
 ```js
-var my_lib; if (Math.random()) {
+var my_lib;
+if (Math.random()) {
     my_lib = require('foo');
 } else {
     my_lib = require('bar');
@@ -765,5 +766,8 @@ No, you can't. Syntactically, `eval()` accepts scripts, not modules.
     exports.action = function () {};
   }));
   ```
-* New browser APIs become modules instead of global variables or properties of `navigator`.
+* New browser APIs become modules instead of global variables or properties of `navigator`. For example:
+  ```js
+  import navigator from 'navigator';
+  ```
 * No more objects-as-namespaces: Objects such as Math and JSON serve as namespaces for functions in ES5. In the future, such functionality can be provided via modules.
