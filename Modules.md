@@ -576,7 +576,9 @@ var counter = require('./lib').counter; // (B)
 var incCounter = require('./lib').incCounter;
 
 // The imported value is a (disconnected) copy
-console.log(counter); // 3 incCounter(); console.log(counter); // 3
+console.log(counter); // 3
+incCounter();
+console.log(counter); // 3
 
 // The imported value can be changed
 counter++;
