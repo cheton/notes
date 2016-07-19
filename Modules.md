@@ -12,7 +12,7 @@
 9. [FAQ: modules](https://github.com/cheton/notes/blob/master/Modules.md#faq-modules)
 10. [Benefits of ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#benefits-of-es6-modules)
 
-## Overview
+## 1. Overview
 
 ### Multiple named exports
 
@@ -70,7 +70,7 @@ let inst = new MyClass();
 | File extension                               | `.js`          | `.js`                        |
 
 
-## Modules in JavaScript
+## 2. Modules in JavaScript
 
 ### ES5 modules
 * CommonJS modules: Node.js
@@ -91,7 +91,7 @@ The ES6 module standard has two parts:
 * Declarative syntax (for importing and exporting)
 * Programmatic loader API: to configure how modules are loaded and to conditionally load modules
 
-## The basics of ES6 modules
+## 3. The basics of ES6 modules
 
 ### Named exports (several per module)
 <i>lib.js</i>
@@ -253,7 +253,7 @@ export function bar() {
 ### Be cafeful with ES6 transpilers
 ES6 transpilers such as Babel compile ES6 modules to ES5. Imports being views on exports is tricky to implement in plain JavaScript. But integrating legacy module systems is even harder. I therefore recommend to keep things simple and to be careful with the more exotic aspects of ES6 modules.
 
-## Importing and exporting in detail
+## 4. Importing and exporting in detail
 
 ### Importing styles
 
@@ -449,7 +449,7 @@ function foo() {}
 export { foo as default };
 ```
 
-## The ES6 module loader API
+## 5. The ES6 module loader API
 
 In addition to the declarative syntax for working with modules, there is also a programmatic API that allows you to:
 * Programmatically work with modules
@@ -485,7 +485,7 @@ Loaders have more methods. Three important ones are:
 * `System.set(name, module)` is for registering a module.
 * `System.define(name, source, options)` both evaluates the module code in source and registers the result.
 
-## Using ES6 modules in browsers
+## 6. Using ES6 modules in browsers
 
 An overview of the differences:
 
@@ -550,7 +550,7 @@ console.log(this === window); // true
   http://example.org/downloads/root.html#colophon
   ```
 
-## Details: imports as views on exports
+## 7. Details: imports as views on exports
 
 Imports work differently in CommonJS and ES6:
 * In CommonJS, imports are copies of exported values.
@@ -653,7 +653,7 @@ obj.prop = 123; // OK
 obj = {}; // TypeError
 ```
 
-## Design goals for ES6 modules
+## 8. Design goals for ES6 modules
 
 ### 1. Default exports are favored
 
@@ -692,7 +692,7 @@ ES6 syntax is well suited for synchronous loading, asynchronous loading is enabl
 
 Cyclic dependencies are not inherently evil. Especially for objects, you sometimes even want this kind of dependency. For example, in some trees likes DOM documents, parents refer to children and children refer back to parents.
 
-## FAQ: modules
+## 9. FAQ: modules
 
 ### Can I use a variable to specify from which module I want to import?
 
@@ -738,7 +738,7 @@ export default {
 
 No, you can't. Syntactically, `eval()` accepts scripts, not modules.
 
-## Benefits of ES6 modules
+## 10. Benefits of ES6 modules
 
 * No more [UMD (Universal Module Definition)](https://github.com/umdjs/umd): UMD is a name for patterns that enable the same file to be used by several module systems (e.g. both CommonJS and AMD). Once ES6 is the only module standard, UMD becomes obsolete.
   ```js
