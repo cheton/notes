@@ -697,7 +697,7 @@ Cyclic dependencies are not inherently evil. Especially for objects, you sometim
 
 ## 9. FAQ: modules
 
-### Can I use a variable to specify from which module I want to import?
+### 1. Can I use a variable to specify from which module I want to import?
 
 Use the programmatic loader API if you want to dynamically determine what module to load:
 ```js
@@ -708,7 +708,7 @@ System.import(moduleSpecifier)
     });
 ```
 
-### Can I import a module conditionally or on demand?
+### 2. Can I import a module conditionally or on demand?
 
 Use the programmatic loader API if you want to load a module conditionally or on demand:
 ```js
@@ -720,14 +720,14 @@ if (Math.random()) {
 }
 ```
 
-### Can I use destructuring in an import statement?
+### 3. Can I use destructuring in an import statement?
 
 No you can't. You cannot do something like this in an ES6 module:
 ```js
 var bar = require('some_module').foo.bar;
 ```
 
-### Are named exports necessary? Why not default-export objects?
+### 4. Are named exports necessary? Why not default-export objects?
 
 You can't enfore a static structure via objects and lose all of the associated advantages:
 ```js
@@ -737,7 +737,7 @@ export default {
 };
 ```
 
-### Can I eval() modules?
+### 5. Can I eval() modules?
 
 No, you can't. Syntactically, `eval()` accepts scripts, not modules.
 
