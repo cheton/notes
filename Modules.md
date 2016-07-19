@@ -338,7 +338,7 @@ export { foo, bar } from 'src/other_module';
 export { foo as myFoo, bar } from 'src/other_module';
 
 // Makes the default export of another module foo the default export of the current module
-export { default } from 'foo';
+export default from 'foo';
 
 // Makes the named export myFunc of module foo the default export of the current module
 export { myFunc as default } from 'foo';
