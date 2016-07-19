@@ -1,16 +1,16 @@
 # Modules
 
 ## Index
-1. [Overview](https://github.com/cheton/notes/blob/master/Modules.md#overview)
-2. [Modules in JavaScript](https://github.com/cheton/notes/blob/master/Modules.md#modules-in-javascript)
-3. [The basics of ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#the-basics-of-es6-modules)
-4. [Importing and exporting in detail](https://github.com/cheton/notes/blob/master/Modules.md#importing-and-exporting-in-detail)
-5. [The ES6 module loader API](https://github.com/cheton/notes/blob/master/Modules.md#the-es6-module-loader-api)
-6. [Using ES6 modules in browsers](https://github.com/cheton/notes/blob/master/Modules.md#using-es6-modules-in-browsers)
-7. [Details: imports as views on exports](https://github.com/cheton/notes/blob/master/Modules.md#details-imports-as-views-on-exports)
-8. [Design goals for ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#design-goals-for-es6-modules)
-9. [FAQ: modules](https://github.com/cheton/notes/blob/master/Modules.md#faq-modules)
-10. [Benefits of ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#benefits-of-es6-modules)
+1. [Overview](https://github.com/cheton/notes/blob/master/Modules.md#1-overview)
+2. [Modules in JavaScript](https://github.com/cheton/notes/blob/master/Modules.md#2-modules-in-javascript)
+3. [The basics of ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#3-the-basics-of-es6-modules)
+4. [Importing and exporting in detail](https://github.com/cheton/notes/blob/master/Modules.md#4-importing-and-exporting-in-detail)
+5. [The ES6 module loader API](https://github.com/cheton/notes/blob/master/Modules.md#5-the-es6-module-loader-api)
+6. [Using ES6 modules in browsers](https://github.com/cheton/notes/blob/master/Modules.md#6-using-es6-modules-in-browsers)
+7. [Details: imports as views on exports](https://github.com/cheton/notes/blob/master/Modules.md#7-details-imports-as-views-on-exports)
+8. [Design goals for ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#8-design-goals-for-es6-modules)
+9. [FAQ: modules](https://github.com/cheton/notes/blob/master/Modules.md#9-faq-modules)
+10. [Benefits of ES6 modules](https://github.com/cheton/notes/blob/master/Modules.md#10-benefits-of-es6-modules)
 
 ## 1. Overview
 
