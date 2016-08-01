@@ -1,14 +1,13 @@
-# Three.js
-
-http://helloracer.com/racer-s/
-
-
 # Basic 3D Graphics Using Three.js
 
+#### Featured Projects
+http://threejs.org/
 
+#### Samsung Racer S
 http://helloracer.com/racer-s/
 
-## Demo
+
+## First Project
 
 https://jsfiddle.net/cheton/pj1kmdb0/
 
@@ -154,12 +153,6 @@ controls.dynamicDampingFactor = 0.3;
 
 // Geometry / Material
 var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
-/*
-var material = new THREE.MeshBasicMaterial({
-    color: '#efefef',
-    wireframe: true
-});
-*/
 var texture = new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif');
 var material = new THREE.MeshBasicMaterial({ map: texture });
 var cube = new THREE.Mesh(geometry, material);
