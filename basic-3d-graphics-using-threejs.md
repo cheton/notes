@@ -3,7 +3,6 @@
 http://helloracer.com/racer-s/
 
 
-
 # Basic 3D Graphics Using Three.js
 
 
@@ -11,13 +10,11 @@ http://helloracer.com/racer-s/
 
 ## Demo
 
-https://jsfiddle.net/y9w0v1bq/
+https://jsfiddle.net/cheton/y9w0v1bq/
 
-[![image](https://cloud.githubusercontent.com/assets/447801/17282441/6ab8cbda-57d8-11e6-84bf-766f5f60ff4c.png)](https://jsfiddle.net/y9w0v1bq/)
+[![image](https://cloud.githubusercontent.com/assets/447801/17285107/2b1555e6-57f3-11e6-9b7a-a7b9802215e0.png)](https://jsfiddle.net/cheton/y9w0v1bq/)
 
 ## Getting Started
-
-### Before we start
 
 ```html
 <!DOCTYPE html>
@@ -53,15 +50,15 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 ```
 
-#### PerspectiveCamera( fov, aspect, near, far )
-
-fov - The camera's vertical field of view, in degrees (from the bottom to the top of the view).<br>
-aspect - The camera's aspect ratio.<br>
-near - The near camera frustum plane.<br>
-far - The far camera frustum plane.<br>
+### Camera
 
 ![image](https://cloud.githubusercontent.com/assets/447801/17282736/99ccb578-57db-11e6-84eb-d5af9905ee5a.png)
 
+#### PerspectiveCamera( fov, aspect, near, far )
+- fov - The camera's vertical field of view, in degrees (from the bottom to the top of the view).<br>
+- aspect - The camera's aspect ratio.<br>
+- near - The near camera frustum plane.<br>
+- far - The far camera frustum plane.<br>
 
 ### Trackball controls
 
@@ -73,6 +70,8 @@ controls.panSpeed = 0.8;
 ```
 
 ### Creating the cube
+
+![image](https://cloud.githubusercontent.com/assets/447801/17285107/2b1555e6-57f3-11e6-9b7a-a7b9802215e0.png)
 
 ```js
 var geometry = new THREE.BoxGeometry(2, 2, 2);
