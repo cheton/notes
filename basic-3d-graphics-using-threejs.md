@@ -148,3 +148,28 @@ var render = function () {
 
 render();
 ```
+
+## Texture
+
+![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)
+
+```js
+var textureMaterials = [];
+[
+    'https://stemkoski.github.io/Three.js/images/crate.gif',
+    'https://stemkoski.github.io/Three.js/images/crate.gif',
+    'https://stemkoski.github.io/Three.js/images/crate.gif',
+    'https://stemkoski.github.io/Three.js/images/crate.gif',
+    'https://stemkoski.github.io/Three.js/images/crate.gif',
+    'https://stemkoski.github.io/Three.js/images/crate.gif'
+].forEach(function(texture) {
+    var texture = THREE.ImageUtils.loadTexture(texture);
+    textureMaterials.push(new THREE.MeshBasicMaterial({ map: texture }));
+});
+var geometry = new THREE.BoxGeometry(2, 2, 2);
+var faceMaterial = new THREE.MeshFaceMaterial(textureMaterials);
+var cube = new THREE.Mesh(geometry, faceMaterial);
+
+cube.position.set(0, 0, 0);
+scene.add(cube);
+```
