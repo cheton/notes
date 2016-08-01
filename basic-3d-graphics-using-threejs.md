@@ -7,7 +7,7 @@ http://threejs.org/
 http://helloracer.com/racer-s/
 
 
-## First Project
+## Creating Your First 3D Scene with Three.js
 
 https://jsfiddle.net/cheton/pj1kmdb0/
 
