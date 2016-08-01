@@ -10,9 +10,9 @@ http://helloracer.com/racer-s/
 
 ## Demo
 
-https://jsfiddle.net/cheton/y9w0v1bq/
+https://jsfiddle.net/cheton/pj1kmdb0/
 
-[![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)](https://jsfiddle.net/cheton/y9w0v1bq/)
+[![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)](https://jsfiddle.net/cheton/pj1kmdb0/)
 
 ## Getting Started
 
