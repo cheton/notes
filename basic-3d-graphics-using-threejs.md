@@ -12,27 +12,25 @@ http://helloracer.com/racer-s/
 
 https://jsfiddle.net/cheton/y9w0v1bq/
 
-[![image](https://cloud.githubusercontent.com/assets/447801/17285107/2b1555e6-57f3-11e6-9b7a-a7b9802215e0.png)](https://jsfiddle.net/cheton/y9w0v1bq/)
+[![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)](https://jsfiddle.net/cheton/y9w0v1bq/)
 
 ## Getting Started
 
 ```html
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>My first Three.js app</title>
-		<style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
-		</style>
-	</head>
-	<body>
-		<script src="js/three.js"></script>
-		<script>
-			// Our Javascript will go here.
-		</script>
-	</body>
+<head>
+<meta charset="utf-8">
+<title>My first Three.js app</title>
+<style>
+  body { margin: 0; }
+  canvas { width: 100%; height: 100% }
+</style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
+  <script src="https://rawgit.com/mrdoob/three.js/dev/examples/js/controls/TrackballControls.js"></script>
+</body>
 </html>
 ```
 
@@ -43,6 +41,8 @@ To actually be able to display anything with Three.js, we need three things: A s
 ```js
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.x = 2;
+camera.position.y = -2;
 camera.position.z = 5;
 
 var renderer = new THREE.WebGLRenderer(); // or new THREE.CanvasRenderer();
@@ -74,10 +74,33 @@ controls.panSpeed = 0.8;
 ![image](https://cloud.githubusercontent.com/assets/447801/17285107/2b1555e6-57f3-11e6-9b7a-a7b9802215e0.png)
 
 ```js
-var geometry = new THREE.BoxGeometry(2, 2, 2);
+// BoxGeometry(width, height, depth, widthSegments, heightSegments, depthSegments)
+var geometry = new THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
 var material = new THREE.MeshBasicMaterial({
     color: 0x00ff00,
     wireframe: true
+});
+var cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+```
+
+#### Face segmentation
+
+![image](https://cloud.githubusercontent.com/assets/447801/17289270/8c165ed6-580b-11e6-9ab9-e624869409c3.png)
+
+```js
+var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
+```
+
+### Applying textures to the cube
+
+![image](https://cloud.githubusercontent.com/assets/447801/17288669/ce358fb0-5808-11e6-8d10-5787478c3ee1.png)
+
+```js
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+var texture = new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif');
+var material = new THREE.MeshBasicMaterial({
+    map: texture
 });
 var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
