@@ -7,6 +7,12 @@
 
 
 ## Webpack
+
 https://github.com/rstacruz/webpack-tricks
 https://medium.com/@foxhound87/lets-start-with-webpack-and-babel-we-must-react-ep-01-5013c70b78c9#.k3pzkh71m
 https://github.com/jlongster/monkey-hot-loader
+
+### Others
+
+#### 14 Must Know Chrome Dev Tools Tricks
+https://www.youtube.com/watch?v=xkzDaKwinA8
