@@ -90,7 +90,11 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'web/node_modules'),
         filename: '[name]/index.js',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        
+        // The JSONP function used by webpack for async loading of chunks.
+        // Use a different identifier when having multiple webpack instances on a single page.
+        jsonpFunction: 'umdJsonp'
     },
     module: {
         rules: [
@@ -351,7 +355,11 @@ module.exports = {
         path: path.join(__dirname, 'output/web'),
         filename: 'index.js',
         libraryTarget: 'umd',
-        publicPath: publicPath
+        publicPath: publicPath,
+        
+        // The JSONP function used by webpack for async loading of chunks.
+        // Use a different identifier when having multiple webpack instances on a single page.
+        jsonpFunction: 'webappJsonp'
     },
     externals: {
         'react': {
