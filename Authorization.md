@@ -16,6 +16,7 @@
 
 ```js
 import React, { PureComponent } from 'react';
+import intersect from 'lodash.intersect';
 import ensureArray from 'lib/ensure-array';
 
 const withAuthorization = (allowedRoles = [], allowedPermissions = []) => {
@@ -79,6 +80,7 @@ const PowerUser = withAuthorization(['user', 'admin'], ['read', 'write', 'exec']
 
 ```js
 import React, { PureComponent } from 'react';
+import intersect from 'lodash.intersect';
 import ensureArray from 'lib/ensure-array';
 
 class Authorization extends PureComponent {
