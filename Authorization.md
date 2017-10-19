@@ -44,7 +44,8 @@ const withAuthorization = (allowedRoles = [], allowedPermissions = []) => {
                 return null;
             }
 
-            if ((allowedPermissions.length > 0) && (intersect(allowedPermissions, ownedPermissions).length === 0)) {
+            if ((allowedPermissions.length > 0) &&
+                (intersect(allowedPermissions, ownedPermissions).length === 0)) {
                 return null;
             }
 
@@ -89,7 +90,7 @@ class Authorization extends PureComponent {
         allowedPermissions: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
     };
 
-    // The context is passed from the topmost parent container.
+    // The context will be passed from the topmost container.
     static contextTypes = {
         authorization: PropTypes.shape({
             user: PropTypes.shape({
@@ -115,7 +116,8 @@ class Authorization extends PureComponent {
             return null;
         }
 
-        if ((allowedPermissions.length > 0) && (intersect(allowedPermissions, ownedPermissions).length === 0)) {
+        if ((allowedPermissions.length > 0) &&
+            (intersect(allowedPermissions, ownedPermissions).length === 0)) {
             return null;
         }
         
