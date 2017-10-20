@@ -3,21 +3,26 @@
 * [React](https://github.com/cheton/notes/blob/master/Authorization.md#React)
 * [jQuery Plugin](https://github.com/cheton/notes/blob/master/Authorization.md#jquery-plugin)
 
-## Store
+## React
+
+### Guideline
+
+The authorization logic and state should be centrally controlled from the container, not within the component.
+
+#### Container State
 
 ```js
 {
-    user: {
-        name: 'John Doe',
-        role: 'administrator', // administrator|user|guest
-        ownedPermissions: ['read', 'write', 'exec'] // Not defined yet
-   }
+    capabilities: {
+        canViewGroups: ['administrator', 'user', 'guest'].includes(user.role),
+        canViewDevices: ['administrator', 'user', 'guest'].includes(user.role),
+        canStartScan: ['administrator', 'user'].includes(user.role),
+        canStopScan: ['administrator', 'user'].includes(user.role)
+    }
 }
 ```
 
-## Guideline
-
-The authorization logic and state should be centrally controlled from the container, not within the component.
+#### Container View
 
 ```js
 {user.role === 'administrator' && (
@@ -36,9 +41,21 @@ The authorization logic and state should be centrally controlled from the contai
 )}
 ```
 
-## React
+### Store
 
-### withAuthorization (HOC)
+```js
+{
+    user: {
+        name: 'John Doe',
+        role: 'administrator', // administrator|user|guest
+        ownedPermissions: ['read', 'write', 'exec'] // Not defined yet
+   }
+}
+```
+
+### Components
+
+#### withAuthorization (HOC)
 
 ```js
 import React, { PureComponent } from 'react';
@@ -85,7 +102,7 @@ const withAuthorization = (allowedRoles = [], allowedPermissions = []) => {
 export default withAuthorization;
 ```
 
-### Authorization Component
+#### Authorization Component
 
 ```js
 import React, { PureComponent } from 'react';
