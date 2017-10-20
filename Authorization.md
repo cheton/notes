@@ -13,7 +13,7 @@ The authorization logic and state should be centrally controlled from the contai
 
 ```js
 {
-    capabilities: {
+    capability: {
         canViewGroups: ['administrator', 'user', 'guest'].includes(user.role),
         canViewDevices: ['administrator', 'user', 'guest'].includes(user.role),
         canStartScan: ['administrator', 'user'].includes(user.role),
