@@ -53,7 +53,7 @@ The authorization logic and state should be centrally controlled from the contai
 }
 ```
 
-### Components
+### Authorization Components
 
 #### withAuthorization (HOC)
 
