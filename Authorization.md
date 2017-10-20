@@ -15,6 +15,27 @@
 }
 ```
 
+## Guideline
+
+The authorization logic and state should be centrally controlled from the container, not within the component.
+
+```js
+{user.role === 'administrator' && (
+    <AdministratorView>
+        <Toolbar>
+        <Groups />
+        <Devices />
+    </AdministratorView>
+)}
+
+{user.role === 'user' && (
+    <UserView>
+        <Groups />
+        <Devices />
+    </UserView>
+)}
+```
+
 ## React
 
 ### withAuthorization (HOC)
@@ -157,7 +178,6 @@ const PowerUser = (props) => (
 </PowerUser>
 ```
 
-
 ## jQuery Plugin
 
 https://github.com/cheton/rbac
@@ -201,14 +221,14 @@ rbac.init({
             inherits: []
         }
     }
-}, function(rbac) {
-    console.log('Your current role is ' + rbac.role());
-    $('.content').rbac(); // You can remove unauthorized elements from the DOM.
 });
 
 rbac.role(); 
 // "administrator"
+
 rbac.permissions();
 // ["delete resources", "edit resources", "add resources", "view resources"]
 
+// Remove unauthorized elements from the DOM.
+$('.content').rbac();
 ```
