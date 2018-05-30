@@ -120,6 +120,28 @@ document.getElementById('container').appendChild(renderer.domElement);
 
 ### SVGRenderer
 
+SVGRenderer can be used to render geometric data using SVG. The produced vector graphics are particular useful in the following use cases:
+
+* Animated logos or icons
+* Interactive 2D/3D diagrams or graphs
+* Interactive maps
+* Complex or animated user interfaces
+
+SVGRenderer has various advantages. It produces crystal-clear and sharp output which is independet of the actual viewport resolution.
+SVG elements can be styled via CSS. And they have good accessibility since it's possible to add metadata like title or description (useful for search engines or screen readers).
+
+There are, however, some important limitations:
+
+* No advanced shading
+* No texture support
+* No shadow support
+
+#### Examples
+
+[svg_lines](https://threejs.org/examples/svg_lines.html) - [source](https://github.com/mrdoob/three.js/blob/master/examples/svg_lines.html)
+
+![image](https://user-images.githubusercontent.com/447801/40715878-a608aa88-6439-11e8-8040-6ae6d22c0d16.png)
+
 ## Creating Your First 3D Scene with Three.js
 
 https://jsfiddle.net/cheton/pj1kmdb0/
@@ -164,9 +186,48 @@ document.body.appendChild(renderer.domElement);
 
 ### Camera
 
-![image](https://cloud.githubusercontent.com/assets/447801/17282736/99ccb578-57db-11e6-84eb-d5af9905ee5a.png)
+![image](https://cloud.githubusercontent.com/assets/447801/23149011/06e82f14-f824-11e6-8b99-d74d80bcd3d6.png)
+
+#### Orthographic Projection
+
+![image](https://cloud.githubusercontent.com/assets/447801/23883266/d1961d0c-08a0-11e7-90d3-181d5dd41f58.png)
+
+```js
+const zoom = Math.min(visibleWidth / width, visibleHeight / height);
+camera.setZoom(zoom);
+```
+
+#### Perspective Projection
+
+![image](https://cloud.githubusercontent.com/assets/447801/23883274/dae2d63e-08a0-11e7-8944-a8b8d5f0a425.png)
+
+```js
+const { x, y, z } = this.camera.position;
+const eye = new THREE.Vector3(x, y, z);
+const target = new THREE.Vector3(0, 0, 0);
+// Find the distance from the camera to the closest face of the object
+const distance = target.distanceTo(eye);
+// The aspect ratio of the canvas (width / height)
+const aspect = visibleHeight > 0 ? (visibleWidth / visibleHeight) : 1;
+
+const fov = Math.max(
+    // to fit the viewport height
+    2 * Math.atan(height / (2 * distance)) * (180 / Math.PI),
+    // to fit the viewport width
+    2 * Math.atan((width / aspect) / (2 * distance)) * (180 / Math.PI)
+);
+
+camera.setFov(Math.max(fov, FOV_MIN));
+```
+
+#### Viewport
+
+https://github.com/cncjs/cncjs/blob/master/src/web/widgets/Visualizer/Viewport.js
+
 
 #### PerspectiveCamera( fov, aspect, near, far )
+![image](https://cloud.githubusercontent.com/assets/447801/17282736/99ccb578-57db-11e6-84eb-d5af9905ee5a.png)
+
 - fov - The camera's vertical field of view, in degrees (from the bottom to the top of the view).<br>
 - aspect - The camera's aspect ratio.<br>
 - near - The near camera frustum plane.<br>
