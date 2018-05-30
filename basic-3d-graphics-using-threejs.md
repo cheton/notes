@@ -1,11 +1,124 @@
 # Basic 3D Graphics Using Three.js
 
-#### Featured Projects
+### Featured Projects
 http://threejs.org/
 
-#### Samsung Racer S
+### Samsung Racer S
 http://helloracer.com/racer-s/
 
+## WebGL
+
+### What's WebGL
+
+https://www.khronos.org/webgl/wiki/Getting_Started
+
+### Key Advantages
+
+Because it is based on OpenGL and will be integrated across popular browsers, WebGL offers a number of advantages, among them:
+
+* An API that is based on a familiar and widely accepted 3D graphics standard
+* Cross-browser and cross-platform compatibility
+* Tight integration with HTML content, including layered compositing, interaction with other HTML elements, and use of the standard HTML event handling mechanisms
+* Hardware-accelerated 3D graphics for the browser environment
+* A scripting environment that makes it easy to prototype 3D graphics—you don't need to compile and link before you can view and debug the rendered graphics
+
+### Browser Support
+
+* https://get.webgl.org/
+* https://caniuse.com/#feat=webgl
+
+## Renderers
+
+### WebGLRenderer
+https://threejs.org/docs/#api/renderers/WebGLRenderer
+
+The WebGL renderer displays your beautifully crafted scenes using [WebGL](https://en.wikipedia.org/wiki/WebGL).
+
+#### Constructor
+
+##### WebGLRenderer(parameters : Object)
+
+```js
+renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('container').appendChild(renderer.domElement);
+```
+
+
+### CanvasRenderer
+
+The Canvas renderer displays your beautifully crafted scenes not using WebGL, but draws it using the (slower) Canvas 2D Context API.
+
+**NOTE: The Canvas renderer has been deprecated and is no longer part of the three.js core.** If you still need to use it you can find it here: [examples/js/renderers/CanvasRenderer.js](https://github.com/mrdoob/three.js/blob/master/examples/js/renderers/CanvasRenderer.js).
+
+This renderer can be a nice fallback from WebGLRenderer for simple scenes:
+
+```js
+function webglAvailable() {
+    try {
+        var canvas = document.createElement('canvas');
+        return !!(window.WebGLRenderingContext && (
+            canvas.getContext('webgl') ||
+            canvas.getContext('experimental-webgl'))
+        );
+    } catch (e) {
+        return false;
+    }
+}
+
+if (webglAvailable()) {
+    renderer = new THREE.WebGLRenderer();
+} else {
+    renderer = new THREE.CanvasRenderer();
+}
+```
+
+### CSS2DRenderer
+
+CSS2DRenderer is a simplified version of CSS3DRenderer. The only transformation that is supported is translation.
+
+The renderer is very useful if you want to combine HTML based labels with 3D objects. Here too, the respective DOM elements are wrapped into an instance of CSS2DObject and added to the scene graph.
+
+```js
+labelRenderer = new THREE.CSS2DRenderer();
+labelRenderer.setSize( window.innerWidth, window.innerHeight );
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0';
+labelRenderer.domElement.style.pointerEvents = 'none';
+document.getElementById( 'container' ).appendChild( labelRenderer.domElement );
+```
+
+#### Examples
+
+[css2d molecules](https://threejs.org/examples/webgl_loader_pdb.html) - [source](https://github.com/mrdoob/three.js/blob/master/examples/webgl_loader_pdb.html)
+
+![image](https://user-images.githubusercontent.com/447801/40714904-6f545508-6436-11e8-8331-bc55ff56dc1a.png)
+
+### CSS3DRenderer
+
+CSS3DRenderer can be used to apply hierarchical 3D transformations to DOM elements via the CSS3 transform property. This renderer is particular interesting if you want to apply 3D effects to a website without canvas based rendering. It can also be used in order to combine DOM elements with WebGL content.
+
+There are, however, some important limitations:
+
+* It's not possible to use the material system of three.js.
+* It's also not possible to use geometries.
+
+So CSS3DRenderer is just focused on ordinary DOM elements. These elements are wrapped into special objects (CSS3DObject or CSS3DSprite) and then added to the scene graph.
+
+```js
+renderer = new THREE.CSS3DRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('container').appendChild(renderer.domElement);
+```
+
+#### Examples
+
+[css3d molecules](https://threejs.org/examples/css3d_molecules.html) - [source](https://github.com/mrdoob/three.js/blob/master/examples/css3d_molecules.html)
+
+![image](https://user-images.githubusercontent.com/447801/40715187-523f3e28-6437-11e8-92af-fd6e4502e680.png)
+
+### SVGRenderer
 
 ## Creating Your First 3D Scene with Three.js
 
