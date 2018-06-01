@@ -199,6 +199,11 @@ camera.setZoom(zoom);
 
 #### Perspective Projection
 
+* fov - The camera's vertical field of view, in degrees (from the bottom to the top of the view).
+* aspect - The camera's aspect ratio.
+* near - The near camera frustum plane.
+* far - The far camera frustum plane.
+
 ![image](https://cloud.githubusercontent.com/assets/447801/23883274/dae2d63e-08a0-11e7-8944-a8b8d5f0a425.png)
 
 ```js
@@ -224,14 +229,6 @@ camera.setFov(Math.max(fov, FOV_MIN));
 
 https://github.com/cncjs/cncjs/blob/master/src/web/widgets/Visualizer/Viewport.js
 
-
-#### PerspectiveCamera( fov, aspect, near, far )
-![image](https://cloud.githubusercontent.com/assets/447801/17282736/99ccb578-57db-11e6-84eb-d5af9905ee5a.png)
-
-- fov - The camera's vertical field of view, in degrees (from the bottom to the top of the view).<br>
-- aspect - The camera's aspect ratio.<br>
-- near - The near camera frustum plane.<br>
-- far - The far camera frustum plane.<br>
 
 ### Trackball controls
 
