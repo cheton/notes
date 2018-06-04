@@ -186,7 +186,7 @@ document.body.appendChild(renderer.domElement);
 
 ### Camera
 
-![image](https://cloud.githubusercontent.com/assets/447801/23149011/06e82f14-f824-11e6-8b99-d74d80bcd3d6.png)
+![image](https://user-images.githubusercontent.com/447801/40900567-becb715e-67fe-11e8-9353-b79835d35713.png)
 
 #### Orthographic Projection
 
