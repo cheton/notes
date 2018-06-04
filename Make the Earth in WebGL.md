@@ -95,10 +95,11 @@ const createEarthCloud = () => {
             const dataResult = contextMap.createImageData(canvasMap.width, canvasMap.height);
             for (let y = 0, offset = 0; y < imageMap.height; y++) {
                 for (let x = 0; x < imageMap.width; x++, offset += 4) {
-                    dataResult.data[offset + 0] = dataMap.data[offset + 0];
-                    dataResult.data[offset + 1] = dataMap.data[offset + 1];
-                    dataResult.data[offset + 2] = dataMap.data[offset + 2];
-                    dataResult.data[offset + 3] = 255 - dataTrans.data[offset + 0];
+                    // The array contains (height x width x 4 bytes) of data
+                    dataResult.data[offset + 0] = dataMap.data[offset + 0]; // Red channel
+                    dataResult.data[offset + 1] = dataMap.data[offset + 1]; // Green channel
+                    dataResult.data[offset + 2] = dataMap.data[offset + 2]; // Blue channel
+                    dataResult.data[offset + 3] = 255 - dataTrans.data[offset + 0]; // Alpha channel
                 }
             }
 
@@ -140,7 +141,10 @@ const MOON_RADIUS = 1737; // km
 const createMoon = () => {
     const geometry = new THREE.SphereGeometry(MOON_RADIUS * zoomFactor, 32, 32);
     const material = new THREE.MeshPhongMaterial({
+        // Diffuse Texture
         map: THREE.ImageUtils.loadTexture(baseURL + 'images/moonmap1k.jpg'),
+        
+        // Bump Texture
         bumpMap: THREE.ImageUtils.loadTexture(baseURL + 'images/moonbump1k.jpg'),
         bumpScale: 0.002,
     });
