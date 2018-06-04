@@ -76,9 +76,16 @@ const renderer = new THREE.WebGLRenderer(); // or new THREE.CanvasRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// Control
+const controls = new THREE.TrackballControls(camera);
+controls.rotateSpeed = 1.0;
+controls.zoomSpeed = 1.2;
+controls.panSpeed = 0.8;
+
 // Render
 const render = () => {
     requestAnimationFrame(render);
+    controls.update();
     renderer.render(scene, camera);
 };
 render();
@@ -257,53 +264,60 @@ There are, however, some important limitations:
 
 ![image](https://user-images.githubusercontent.com/447801/40715878-a608aa88-6439-11e8-8040-6ae6d22c0d16.png)
 
-### Trackball controls
+### Trackball Controls
 
 ```js
-var controls = new THREE.TrackballControls(camera);
+const controls = new THREE.TrackballControls(camera);
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.2;
 controls.panSpeed = 0.8;
 ```
 
-### Creating the cube
+### Creating the Cube
 
 ![image](https://cloud.githubusercontent.com/assets/447801/17285107/2b1555e6-57f3-11e6-9b7a-a7b9802215e0.png)
 
 ```js
 // BoxGeometry(width, height, depth, widthSegments, heightSegments, depthSegments)
-var geometry = new THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
-var material = new THREE.MeshBasicMaterial({
+const geometry = new THREE.BoxGeometry(
+    1, // width
+    1, // height
+    1, // depth
+    1, // width segments
+    1, // height segments
+    1 // depth segments
+);
+const material = new THREE.MeshBasicMaterial({
     color: 0x00ff00,
     wireframe: true
 });
-var cube = new THREE.Mesh(geometry, material);
+const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 ```
 
-#### Face segmentation
+#### Face Segmentation
 
 ![image](https://cloud.githubusercontent.com/assets/447801/17289270/8c165ed6-580b-11e6-9ab9-e624869409c3.png)
 
 ```js
-var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
+const geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
 ```
 
-### Applying textures to the cube
+### Applying Textures to the Cube
 
 ![image](https://cloud.githubusercontent.com/assets/447801/17288669/ce358fb0-5808-11e6-8d10-5787478c3ee1.png)
 
 ```js
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var texture = new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif');
-var material = new THREE.MeshBasicMaterial({
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const texture = new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif');
+const material = new THREE.MeshBasicMaterial({
     map: texture
 });
-var cube = new THREE.Mesh(geometry, material);
+const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 ```
 
-### Rendering the scene
+### Rendering the Scene
 
 ```js
 function render() {
@@ -313,7 +327,7 @@ function render() {
 render();
 ```
 
-### Animating the cube
+### Animating the Cube
 
 Add the following right above the renderer.render call in your render function:
 
@@ -323,7 +337,7 @@ cube.rotation.z += 0.01;
 
 This will be run every frame (60 times per second), and give the cube a nice rotation animation.
 
-### The result
+### Result
 
 ```js
 // Scene
