@@ -302,18 +302,22 @@ https://jsfiddle.net/pj1kmdb0/14/
 
 ```js
 // Scene
-const scene = new THREE.Scene();
+const scene = new THREE.Scene({
+    autoClearColor: true,
+    antialias: true,
+    alpha: true
+});
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-		75, // fov, in degrees
+    50, // fov, in degrees
   	window.innerWidth / window.innerHeight, // aspect ratio
   	0.1, // near
   	1000 // far
 );
-camera.position.x = 2;
-camera.position.y = -2;
-camera.position.z = 5;
+camera.position.x = 0;
+camera.position.y = 0;
+camera.position.z = 20;
 
 // WebGL Renderer
 const renderer = new THREE.WebGLRenderer();
@@ -331,7 +335,7 @@ controls.staticMoving = true;
 controls.dynamicDampingFactor = 0.3;
 
 // Geometry
-const geometry = new THREE.BoxGeometry(
+const boxGeometry = new THREE.BoxGeometry(
     1, // width
     1, // height
     1, // depth
@@ -345,23 +349,74 @@ const url = 'https://stemkoski.github.io/Three.js/images/crate.gif';
 const texture = new THREE.TextureLoader().load(url);
 
 // Material
-const material = new THREE.MeshBasicMaterial({
+const boxMaterial = new THREE.MeshBasicMaterial({
     map: texture
     //color: '#efefef',
     //wireframe: true
 });
 
-const cube = new THREE.Mesh(geometry, material);
+// Cube
+const cube = new THREE.Mesh(boxGeometry, boxMaterial);
 cube.position.set(0, 0, 0);
+
 scene.add(cube);
 
+// Orbit
+const v0 = new THREE.Vector3(0, 0, 0);
+const radius = 10;
+const startAngle = 0;
+const endAngle = startAngle + 2 * Math.PI;
+const isClockwise = true;
+const arcCurve = new THREE.ArcCurve(
+    v0.x, // aX
+    v0.y, // aY
+    radius, // aRadius
+    startAngle, // aStartAngle
+    endAngle, // aEndAngle
+    isClockwise // isClockwise
+);
+const divisions = 500;
+const points = arcCurve.getPoints(divisions);
+const lineColor = new THREE.Color('#d3d3d3'); // lightgray
+
+const orbitGeometry = new THREE.Geometry();
+for (let i = 0; i < points.length - 1; ++i) {
+    const v1 = points[i];
+    const v2 = points[i + 1];
+    Array.prototype.push.apply(orbitGeometry.vertices, [
+        new THREE.Vector3(v1.x, v1.y, v1.z),
+        new THREE.Vector3(v2.x, v2.y, v2.z)
+    ]);
+    Array.prototype.push.apply(orbitGeometry.colors, [
+        lineColor,
+    lineColor
+    ]);
+}
+const orbitMaterial = new THREE.LineBasicMaterial({
+    color: lineColor,
+    linewidth: 1,
+    vertexColors: THREE.VertexColors,
+    opacity: 0.5,
+    transparent: true
+});
+const orbit = new THREE.Line(orbitGeometry, orbitMaterial);
+
+scene.add(orbit);
+
+let index = 0;
+
 const render = function () {
-	requestAnimationFrame( render );
+    requestAnimationFrame(render);
 
-	controls.update();
-	cube.rotation.z += 0.01;
+    controls.update();
+    
+    cube.rotation.z += 0.1;
+    cube.position.x = points[index].x;
+    cube.position.y = points[index].y;
 
-	renderer.render(scene, camera);
+    index = (index + 1) % points.length;
+    
+    renderer.render(scene, camera);
 };
 
 render();
