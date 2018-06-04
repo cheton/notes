@@ -359,9 +359,9 @@ const boxGeometry = new THREE.BoxGeometry(
 
 // Material
 const boxMaterial = new THREE.MeshBasicMaterial({
-    //map: new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif')
-    color: '#efefef',
-    wireframe: true
+    map: new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif')
+    //color: '#efefef',
+    //wireframe: true
 });
 
 // Cube
@@ -388,19 +388,19 @@ const getOrbitPoints = (v0, radius = 1, divisions = 32) => {
 };
 
 const createOrbit = (orbitPoints) => {
-    const lineColor = new THREE.Color('#d3d3d3'); // lightgray
+    const color = new THREE.Color('#d3d3d3'); // lightgray
     
     // Geometry
     const orbitGeometry = new THREE.Geometry();
     for (let i = 0; i < orbitPoints.length; ++i) {
         const orbitPoint = orbitPoints[i];
         orbitGeometry.vertices.push(new THREE.Vector3(orbitPoint.x, orbitPoint.y, orbitPoint.z));
-        orbitGeometry.colors.push(lineColor);
+        orbitGeometry.colors.push(color);
     }
     
     // Material
     const orbitMaterial = new THREE.LineBasicMaterial({
-        color: lineColor,
+        color: color,
         linewidth: 1,
         vertexColors: THREE.VertexColors,
         opacity: 0.5,
@@ -423,9 +423,9 @@ const render = () => {
     controls.update();
     cube.rotation.z += 0.01;
 
-    cube.position.x = orbitPoints[index].x;
-    cube.position.y = orbitPoints[index].y;
-    index = (index + 1) % orbitPoints.length;
+    //cube.position.x = orbitPoints[index].x;
+    //cube.position.y = orbitPoints[index].y;
+    //index = (index + 1) % orbitPoints.length;
 
     renderer.render(scene, camera);
 };
