@@ -58,10 +58,10 @@ const createEarthCloud = () => {
     canvasCloud.height    = 512;
     const contextCloud    = canvasCloud.getContext('2d');
 
-    // load earthcloudmap
+    // Load earthcloudmap
     const imageMap    = new Image();
     imageMap.addEventListener('load', function() {
-        // create dataMap ImageData for earthcloudmap
+        // Create dataMap ImageData for earthcloudmap
         const canvasMap = document.createElement('canvas');
         canvasMap.width = imageMap.width;
         canvasMap.height = imageMap.height;
@@ -69,29 +69,29 @@ const createEarthCloud = () => {
         contextMap.drawImage(imageMap, 0, 0);
         const dataMap = contextMap.getImageData(0, 0, canvasMap.width, canvasMap.height);
 
-        // load earthcloudmaptrans
+        // Load earthcloudmaptrans
         const imageTrans = new Image();
         imageTrans.addEventListener('load', function () {
-            // create dataTrans ImageData for earthcloudmaptrans
+            // Create dataTrans ImageData for earthcloudmaptrans
             const canvasTrans = document.createElement('canvas');
-            canvasTrans.width    = imageTrans.width;
+            canvasTrans.width = imageTrans.width;
             canvasTrans.height = imageTrans.height;
             const contextTrans = canvasTrans.getContext('2d');
             contextTrans.drawImage(imageTrans, 0, 0);
             const dataTrans = contextTrans.getImageData(0, 0, canvasTrans.width, canvasTrans.height);
 
-            // merge dataMap + dataTrans into dataResult
+            // Merge dataMap + dataTrans into dataResult
             const dataResult = contextMap.createImageData(canvasMap.width, canvasMap.height);
             for (let y = 0, offset = 0; y < imageMap.height; y++) {
                 for (let x = 0; x < imageMap.width; x++, offset += 4) {
-                    dataResult.data[offset + 0]    = dataMap.data[offset + 0];
-                    dataResult.data[offset + 1]    = dataMap.data[offset + 1];
-                    dataResult.data[offset + 2]    = dataMap.data[offset + 2];
-                    dataResult.data[offset + 3]    = 255 - dataTrans.data[offset + 0];
+                    dataResult.data[offset + 0] = dataMap.data[offset + 0];
+                    dataResult.data[offset + 1] = dataMap.data[offset + 1];
+                    dataResult.data[offset + 2] = dataMap.data[offset + 2];
+                    dataResult.data[offset + 3] = 255 - dataTrans.data[offset + 0];
                 }
             }
 
-            // update texture with result
+            // Update texture with the result
             contextCloud.putImageData(dataResult,0,0);
             material.map.needsUpdate = true;
         });
@@ -99,7 +99,7 @@ const createEarthCloud = () => {
         imageTrans.src = baseURL + 'images/earthcloudmaptrans.jpg';
     }, false);
     imageMap.crossOrigin = 'Anonymous';
-    imageMap.src    = baseURL + 'images/earthcloudmap.jpg';
+    imageMap.src = baseURL + 'images/earthcloudmap.jpg';
 
     const geometry = new THREE.SphereGeometry(EARTH_CLOUD_RADIUS * zoomFactor, 32, 32);
     const material = new THREE.MeshPhongMaterial({
