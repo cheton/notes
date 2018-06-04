@@ -298,22 +298,30 @@ This will be run every frame (60 times per second), and give the cube a nice rot
 
 ### The result
 
+https://jsfiddle.net/pj1kmdb0/14/
+
 ```js
-var scene = new THREE.Scene();
+// Scene
+const scene = new THREE.Scene();
 
 // Camera
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+const camera = new THREE.PerspectiveCamera(
+		75, // fov, in degrees
+  	window.innerWidth / window.innerHeight, // aspect ratio
+  	0.1, // near
+  	1000 // far
+);
 camera.position.x = 2;
 camera.position.y = -2;
 camera.position.z = 5;
 
 // WebGL Renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-// Trackball controls
-controls = new THREE.TrackballControls( camera );
+// Trackball Controls
+controls = new THREE.TrackballControls(camera);
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.2;
 controls.panSpeed = 0.8;
@@ -322,27 +330,45 @@ controls.noPan = false;
 controls.staticMoving = true;
 controls.dynamicDampingFactor = 0.3;
 
-// Geometry / Material
-var geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
-var texture = new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif');
-var material = new THREE.MeshBasicMaterial({ map: texture });
-var cube = new THREE.Mesh(geometry, material);
+// Geometry
+const geometry = new THREE.BoxGeometry(
+    1, // width
+    1, // height
+    1, // depth
+    5, // widthSegments
+    5, // heightSegments
+    5 // depthSegments
+);
+
+// TextureLoader
+const url = 'https://stemkoski.github.io/Three.js/images/crate.gif';
+const texture = new THREE.TextureLoader().load(url);
+
+// Material
+const material = new THREE.MeshBasicMaterial({
+    map: texture
+    //color: '#efefef',
+    //wireframe: true
+});
+
+const cube = new THREE.Mesh(geometry, material);
 cube.position.set(0, 0, 0);
 scene.add(cube);
 
-var render = function () {
+const render = function () {
 	requestAnimationFrame( render );
 
-    controls.update();
+	controls.update();
 	cube.rotation.z += 0.01;
 
 	renderer.render(scene, camera);
 };
+
 render();
 
-window.addEventListener('resize', function() {
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
-	renderer.setSize(window.innerWidth, window.innerHeight);
-}, false);
+window.addEventListener('resize', function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}, false );
 ```
