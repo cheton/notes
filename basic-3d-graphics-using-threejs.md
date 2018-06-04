@@ -298,7 +298,7 @@ This will be run every frame (60 times per second), and give the cube a nice rot
 
 ### The result
 
-https://jsfiddle.net/pj1kmdb0/16/
+https://jsfiddle.net/cheton/pj1kmdb0/17/
 
 ```js
 // Scene
@@ -340,13 +340,9 @@ const boxGeometry = new THREE.BoxGeometry(
     5 // depthSegments
 );
 
-// TextureLoader
-const url = 'https://stemkoski.github.io/Three.js/images/crate.gif';
-const texture = new THREE.TextureLoader().load(url);
-
 // Material
 const boxMaterial = new THREE.MeshBasicMaterial({
-    //map: texture
+    //map: new THREE.TextureLoader().load('https://stemkoski.github.io/Three.js/images/crate.gif')
     color: '#efefef',
     wireframe: true
 });
@@ -356,7 +352,8 @@ const cube = new THREE.Mesh(boxGeometry, boxMaterial);
 cube.position.set(0, 0, 0);
 scene.add(cube);
 
-const getOrbitPoints = function (v0, radius = 1, divisions = 32) {
+// Orbit
+const getOrbitPoints = (v0, radius = 1, divisions = 32) => {
     const startAngle = 0;
     const endAngle = startAngle + 2 * Math.PI;
     const isClockwise = true;
@@ -373,31 +370,37 @@ const getOrbitPoints = function (v0, radius = 1, divisions = 32) {
     return points;
 };
 
+const createOrbit = (orbitPoints) => {
+		const lineColor = new THREE.Color('#d3d3d3'); // lightgray
+    
+    // Geometry
+    const orbitGeometry = new THREE.Geometry();
+    for (let i = 0; i < orbitPoints.length; ++i) {
+        const orbitPoint = orbitPoints[i];
+        orbitGeometry.vertices.push(new THREE.Vector3(orbitPoint.x, orbitPoint.y, orbitPoint.z));
+        orbitGeometry.colors.push(lineColor);
+    }
+    
+    // Material
+    const orbitMaterial = new THREE.LineBasicMaterial({
+        color: lineColor,
+        linewidth: 1,
+        vertexColors: THREE.VertexColors,
+        opacity: 0.5,
+        transparent: true
+    });
+
+    return new THREE.Line(orbitGeometry, orbitMaterial);
+};
+
 const orbitPoints = getOrbitPoints(new THREE.Vector3(0, 0, 0), 10, 500);
-
-const lineColor = new THREE.Color('#d3d3d3'); // lightgray
-
-const orbitGeometry = new THREE.Geometry();
-for (let i = 0; i < orbitPoints.length; ++i) {
-    const orbitPoint = orbitPoints[i];
-    orbitGeometry.vertices.push(new THREE.Vector3(orbitPoint.x, orbitPoint.y, orbitPoint.z));
-    orbitGeometry.colors.push(lineColor);
-}
-const orbitMaterial = new THREE.LineBasicMaterial({
-    color: lineColor,
-    linewidth: 1,
-    vertexColors: THREE.VertexColors,
-    opacity: 0.5,
-    transparent: true
-});
-
-const orbit = new THREE.Line(orbitGeometry, orbitMaterial);
-
+const orbit = createOrbit(orbitPoints);
 scene.add(orbit);
 
 let index = 0;
 
-const render = function() {
+// Render
+const render = () => {
     requestAnimationFrame(render);
 
     controls.update();
@@ -409,9 +412,9 @@ const render = function() {
 
     renderer.render(scene, camera);
 };
-
 render();
 
+// Resize
 window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
