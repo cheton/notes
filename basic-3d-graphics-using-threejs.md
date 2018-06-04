@@ -233,6 +233,8 @@ document.getElementById('container').appendChild(renderer.domElement);
 
 ### SVGRenderer
 
+https://threejs.org/docs/#examples/renderers/SVGRenderer
+
 SVGRenderer can be used to render geometric data using SVG. The produced vector graphics are particular useful in the following use cases:
 
 * Animated logos or icons
