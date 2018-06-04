@@ -298,22 +298,18 @@ This will be run every frame (60 times per second), and give the cube a nice rot
 
 ### The result
 
-https://jsfiddle.net/pj1kmdb0/14/
+https://jsfiddle.net/pj1kmdb0/16/
 
 ```js
 // Scene
-const scene = new THREE.Scene({
-    autoClearColor: true,
-    antialias: true,
-    alpha: true
-});
+const scene = new THREE.Scene();
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
     50, // fov, in degrees
-  	window.innerWidth / window.innerHeight, // aspect ratio
-  	0.1, // near
-  	1000 // far
+    window.innerWidth / window.innerHeight, // aspect ratio
+    0.1, // near
+    1000 // far
 );
 camera.position.x = 0;
 camera.position.y = 0;
@@ -350,47 +346,42 @@ const texture = new THREE.TextureLoader().load(url);
 
 // Material
 const boxMaterial = new THREE.MeshBasicMaterial({
-    map: texture
-    //color: '#efefef',
-    //wireframe: true
+    //map: texture
+    color: '#efefef',
+    wireframe: true
 });
 
 // Cube
 const cube = new THREE.Mesh(boxGeometry, boxMaterial);
 cube.position.set(0, 0, 0);
-
 scene.add(cube);
 
-// Orbit
-const v0 = new THREE.Vector3(0, 0, 0);
-const radius = 10;
-const startAngle = 0;
-const endAngle = startAngle + 2 * Math.PI;
-const isClockwise = true;
-const arcCurve = new THREE.ArcCurve(
-    v0.x, // aX
-    v0.y, // aY
-    radius, // aRadius
-    startAngle, // aStartAngle
-    endAngle, // aEndAngle
-    isClockwise // isClockwise
-);
-const divisions = 500;
-const points = arcCurve.getPoints(divisions);
+const getOrbitPoints = function (v0, radius = 1, divisions = 32) {
+    const startAngle = 0;
+    const endAngle = startAngle + 2 * Math.PI;
+    const isClockwise = true;
+    const arcCurve = new THREE.ArcCurve(
+        v0.x, // aX
+        v0.y, // aY
+        radius, // aRadius
+        startAngle, // aStartAngle
+        endAngle, // aEndAngle
+        isClockwise // isClockwise
+    );
+    const points = arcCurve.getPoints(divisions);
+
+    return points;
+};
+
+const orbitPoints = getOrbitPoints(new THREE.Vector3(0, 0, 0), 10, 500);
+
 const lineColor = new THREE.Color('#d3d3d3'); // lightgray
 
 const orbitGeometry = new THREE.Geometry();
-for (let i = 0; i < points.length - 1; ++i) {
-    const v1 = points[i];
-    const v2 = points[i + 1];
-    Array.prototype.push.apply(orbitGeometry.vertices, [
-        new THREE.Vector3(v1.x, v1.y, v1.z),
-        new THREE.Vector3(v2.x, v2.y, v2.z)
-    ]);
-    Array.prototype.push.apply(orbitGeometry.colors, [
-        lineColor,
-    lineColor
-    ]);
+for (let i = 0; i < orbitPoints.length; ++i) {
+    const orbitPoint = orbitPoints[i];
+    orbitGeometry.vertices.push(new THREE.Vector3(orbitPoint.x, orbitPoint.y, orbitPoint.z));
+    orbitGeometry.colors.push(lineColor);
 }
 const orbitMaterial = new THREE.LineBasicMaterial({
     color: lineColor,
@@ -399,29 +390,29 @@ const orbitMaterial = new THREE.LineBasicMaterial({
     opacity: 0.5,
     transparent: true
 });
+
 const orbit = new THREE.Line(orbitGeometry, orbitMaterial);
 
 scene.add(orbit);
 
 let index = 0;
 
-const render = function () {
+const render = function() {
     requestAnimationFrame(render);
 
     controls.update();
-    
-    cube.rotation.z += 0.1;
-    cube.position.x = points[index].x;
-    cube.position.y = points[index].y;
+    cube.rotation.z += 0.01;
 
-    index = (index + 1) % points.length;
-    
+    cube.position.x = orbitPoints[index].x;
+    cube.position.y = orbitPoints[index].y;
+    index = (index + 1) % orbitPoints.length;
+
     renderer.render(scene, camera);
 };
 
 render();
 
-window.addEventListener('resize', function () {
+window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
