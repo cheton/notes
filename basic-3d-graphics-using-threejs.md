@@ -86,6 +86,8 @@ render();
 
 ### Scene
 
+Scenes allow you to set up what and where is to be rendered by three.js. This is where you place objects, lights and cameras.
+
 ```js
 const scene = new THREE.Scene();
 ```
