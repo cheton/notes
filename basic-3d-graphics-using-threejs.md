@@ -30,7 +30,7 @@ Because it is based on OpenGL and will be integrated across popular browsers, We
 
 ## Creating Your First 3D Scene with Three.js
 
-https://jsfiddle.net/cheton/pj1kmdb0/17/
+https://jsfiddle.net/pj1kmdb0/18/
 
 [![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)](https://jsfiddle.net/cheton/pj1kmdb0/)
 
