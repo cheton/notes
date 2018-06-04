@@ -371,7 +371,7 @@ const getOrbitPoints = (v0, radius = 1, divisions = 32) => {
 };
 
 const createOrbit = (orbitPoints) => {
-		const lineColor = new THREE.Color('#d3d3d3'); // lightgray
+    const lineColor = new THREE.Color('#d3d3d3'); // lightgray
     
     // Geometry
     const orbitGeometry = new THREE.Geometry();
