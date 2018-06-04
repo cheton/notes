@@ -27,7 +27,112 @@ Because it is based on OpenGL and will be integrated across popular browsers, We
 * https://get.webgl.org/
 * https://caniuse.com/#feat=webgl
 
-## Renderers
+
+## Creating Your First 3D Scene with Three.js
+
+https://jsfiddle.net/cheton/pj1kmdb0/17/
+
+[![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)](https://jsfiddle.net/cheton/pj1kmdb0/)
+
+## Getting Started
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My first Three.js app</title>
+<style>
+  body { margin: 0; }
+  canvas { width: 100%; height: 100% }
+</style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
+  <script src="https://rawgit.com/mrdoob/three.js/dev/examples/js/controls/TrackballControls.js"></script>
+</body>
+</html>
+```
+
+To actually be able to display anything with Three.js, we need three things: A scene, a camera, and a renderer so we can render the scene with the camera.
+
+```js
+// Scene
+const scene = new THREE.Scene();
+
+// Camera
+const camera = new THREE.PerspectiveCamera(
+    50, // fov, in degrees
+    window.innerWidth / window.innerHeight, // aspect ratio
+    0.1, // near
+    1000 // far
+);
+camera.position.x = 0;
+camera.position.y = 0;
+camera.position.z = 20;
+
+// Renderer
+const renderer = new THREE.WebGLRenderer(); // or new THREE.CanvasRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Render
+const render = () => {
+    requestAnimationFrame(render);
+    renderer.render(scene, camera);
+};
+render();
+```
+
+### Scene
+
+```js
+const scene = new THREE.Scene();
+```
+
+### Camera
+
+#### Perspective Projection vs. Orthographic Projection
+
+![image](https://user-images.githubusercontent.com/447801/40900567-becb715e-67fe-11e8-9353-b79835d35713.png)
+
+#### Perspective Camera
+
+![image](https://cloud.githubusercontent.com/assets/447801/23883274/dae2d63e-08a0-11e7-8944-a8b8d5f0a425.png)
+
+PerspectiveCamera(fov: Number, aspect: Number, near: Number, far: Number)
+* fov — Camera frustum vertical field of view.
+* aspect — Camera frustum aspect ratio.
+* near — Camera frustum near plane.
+* far — Camera frustum far plane.
+
+```js
+const camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
+scene.add(camera);
+```
+
+#### Orthographic Camera
+
+![image](https://cloud.githubusercontent.com/assets/447801/23883266/d1961d0c-08a0-11e7-90d3-181d5dd41f58.png)
+
+OrthographicCamera(left: Number, right: Number, top: Number, bottom: Number, near: Number, far: Number)
+* left — Camera frustum left plane.
+* right — Camera frustum right plane.
+* top — Camera frustum top plane.
+* bottom — Camera frustum bottom plane.
+* near — Camera frustum near plane.
+* far — Camera frustum far plane.
+
+```js
+const camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, 1, 1000);
+scene.add(camera);
+```
+
+#### Fit Camera To Object
+
+https://github.com/cncjs/cncjs/blob/master/src/web/widgets/Visualizer/Viewport.js#L59-L102
+
+## Renderer
 
 ### WebGLRenderer
 https://threejs.org/docs/#api/renderers/WebGLRenderer
@@ -142,94 +247,6 @@ There are, however, some important limitations:
 
 ![image](https://user-images.githubusercontent.com/447801/40715878-a608aa88-6439-11e8-8040-6ae6d22c0d16.png)
 
-## Creating Your First 3D Scene with Three.js
-
-https://jsfiddle.net/cheton/pj1kmdb0/
-
-[![image](https://cloud.githubusercontent.com/assets/447801/17285949/bd9ebdf8-57f8-11e6-8404-96cc3b47e7ed.png)](https://jsfiddle.net/cheton/pj1kmdb0/)
-
-## Getting Started
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>My first Three.js app</title>
-<style>
-  body { margin: 0; }
-  canvas { width: 100%; height: 100% }
-</style>
-</head>
-<body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
-  <script src="https://rawgit.com/mrdoob/three.js/dev/examples/js/controls/TrackballControls.js"></script>
-</body>
-</html>
-```
-
-### Creating the scene
-
-To actually be able to display anything with Three.js, we need three things: A scene, a camera, and a renderer so we can render the scene with the camera.
-
-```js
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.x = 2;
-camera.position.y = -2;
-camera.position.z = 5;
-
-var renderer = new THREE.WebGLRenderer(); // or new THREE.CanvasRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-```
-
-### Camera
-
-![image](https://user-images.githubusercontent.com/447801/40900567-becb715e-67fe-11e8-9353-b79835d35713.png)
-
-#### Orthographic Projection
-
-![image](https://cloud.githubusercontent.com/assets/447801/23883266/d1961d0c-08a0-11e7-90d3-181d5dd41f58.png)
-
-```js
-const zoom = Math.min(visibleWidth / width, visibleHeight / height);
-camera.setZoom(zoom);
-```
-
-#### Perspective Projection
-
-* fov - The camera's vertical field of view, in degrees (from the bottom to the top of the view).
-* aspect - The camera's aspect ratio.
-* near - The near camera frustum plane.
-* far - The far camera frustum plane.
-
-![image](https://cloud.githubusercontent.com/assets/447801/23883274/dae2d63e-08a0-11e7-8944-a8b8d5f0a425.png)
-
-```js
-const { x, y, z } = this.camera.position;
-const eye = new THREE.Vector3(x, y, z);
-const target = new THREE.Vector3(0, 0, 0);
-// Find the distance from the camera to the closest face of the object
-const distance = target.distanceTo(eye);
-// The aspect ratio of the canvas (width / height)
-const aspect = visibleHeight > 0 ? (visibleWidth / visibleHeight) : 1;
-
-const fov = Math.max(
-    // to fit the viewport height
-    2 * Math.atan(height / (2 * distance)) * (180 / Math.PI),
-    // to fit the viewport width
-    2 * Math.atan((width / aspect) / (2 * distance)) * (180 / Math.PI)
-);
-
-camera.setFov(Math.max(fov, FOV_MIN));
-```
-
-#### Viewport
-
-https://github.com/cncjs/cncjs/blob/master/src/web/widgets/Visualizer/Viewport.js
-
-
 ### Trackball controls
 
 ```js
@@ -297,8 +314,6 @@ cube.rotation.z += 0.01;
 This will be run every frame (60 times per second), and give the cube a nice rotation animation.
 
 ### The result
-
-https://jsfiddle.net/cheton/pj1kmdb0/17/
 
 ```js
 // Scene
