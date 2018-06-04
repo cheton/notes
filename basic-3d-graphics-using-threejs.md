@@ -137,6 +137,7 @@ https://github.com/cncjs/cncjs/blob/master/src/web/widgets/Visualizer/Viewport.j
 ## Renderer
 
 ### WebGLRenderer
+
 https://threejs.org/docs/#api/renderers/WebGLRenderer
 
 The WebGL renderer displays your beautifully crafted scenes using [WebGL](https://en.wikipedia.org/wiki/WebGL).
@@ -152,8 +153,9 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('container').appendChild(renderer.domElement);
 ```
 
-
 ### CanvasRenderer
+
+https://threejs.org/docs/#examples/renderers/CanvasRenderer
 
 The Canvas renderer displays your beautifully crafted scenes not using WebGL, but draws it using the (slower) Canvas 2D Context API.
 
@@ -183,6 +185,8 @@ if (webglAvailable()) {
 
 ### CSS2DRenderer
 
+https://threejs.org/docs/#examples/renderers/CSS2DRenderer
+
 CSS2DRenderer is a simplified version of CSS3DRenderer. The only transformation that is supported is translation.
 
 The renderer is very useful if you want to combine HTML based labels with 3D objects. Here too, the respective DOM elements are wrapped into an instance of CSS2DObject and added to the scene graph.
@@ -203,6 +207,8 @@ document.getElementById( 'container' ).appendChild( labelRenderer.domElement );
 ![image](https://user-images.githubusercontent.com/447801/40714904-6f545508-6436-11e8-8331-bc55ff56dc1a.png)
 
 ### CSS3DRenderer
+
+https://threejs.org/docs/#examples/renderers/CSS3DRenderer
 
 CSS3DRenderer can be used to apply hierarchical 3D transformations to DOM elements via the CSS3 transform property. This renderer is particular interesting if you want to apply 3D effects to a website without canvas based rendering. It can also be used in order to combine DOM elements with WebGL content.
 
