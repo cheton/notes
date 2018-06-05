@@ -3,8 +3,8 @@
 ### Featured Projects
 http://threejs.org/
 
-### Samsung Racer S
-http://helloracer.com/racer-s/
+### Examples
+https://threejs.org/examples/#webgl_lights_physical
 
 ## WebGL
 
