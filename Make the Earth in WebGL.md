@@ -49,13 +49,19 @@ const createEarth = () => {
 ```
 
 #### Diffuse Texture
+
 ![image](https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/earthmap1k.jpg)
+![image](https://user-images.githubusercontent.com/447801/40951248-b8be522c-68a8-11e8-862f-3765441540d9.png)
 
 #### Bump Texture
+
 ![image](https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/earthbump1k.jpg)
+![image](https://user-images.githubusercontent.com/447801/40951286-e2bc82ec-68a8-11e8-8c1b-28610a2f19d3.png)
 
 #### Specular Texture
+
 ![image](https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/earthspec1k.jpg)
+![image](https://user-images.githubusercontent.com/447801/40951326-fc5e48ca-68a8-11e8-80b8-67c10ee3a4fc.png)
 
 ### Earth Cloud
 
