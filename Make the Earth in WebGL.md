@@ -1,6 +1,6 @@
 http://learningthreejs.com/blog/2013/09/16/how-to-make-the-earth-in-webgl/
 
-https://jsfiddle.net/cheton/14but7n5/5/
+https://jsfiddle.net/14but7n5/6/
 
 ![image](https://user-images.githubusercontent.com/447801/40910319-6607e686-681e-11e8-9202-67c5d4ca12d8.png)
 
