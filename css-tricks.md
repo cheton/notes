@@ -19,6 +19,7 @@ Demo of the Bootstrap 4 Centering Methods
 
 In your case, use mx-auto to center the col-3 and text-center to center it's content..
 
+```
 <div class="row">
     <div class="col-3 mx-auto">
         <div class="text-center">
@@ -26,10 +27,12 @@ In your case, use mx-auto to center the col-3 and text-center to center it's con
         </div>
     </div>
 </div>
+```
 http://www.codeply.com/go/GRUfnxl3Ol
 
 or, using justify-content-center on flexbox elements (.row):
 
+```
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-3 text-center">
@@ -37,5 +40,6 @@ or, using justify-content-center on flexbox elements (.row):
         </div>
     </div>
 </div>
+```
 Also see:
 Vertical Align Center in Bootstrap 4
