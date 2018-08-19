@@ -9,11 +9,12 @@ https://stackoverflow.com/questions/42528411/center-the-content-inside-a-column-
 
 There are multiple horizontal centering methods in Bootstrap 4...
 
-text-center for center display:inline elements
-offset-* or mx-auto can be used to center column (col-*)
-or, justify-content-center on the row to center columns (col-*)
-mx-auto for centering display:block elements inside d-flex
-mx-auto (auto x-axis margins) will center display:block or display:flex elements that have a defined width, (%, vw, px, etc..). Flexbox is used by default on grid columns, so there are also various flexbox centering methods.
+* `text-center` for center `display:inline` elements
+* `offset-*` or `mx-auto` can be used to center column (`col-*`)
+* or, `justify-content-center` on the `row` to center columns (`col-*`)
+* `mx-auto` for centering `display:block` elements inside `d-flex`
+
+`mx-auto` (auto x-axis margins) will center `display:block` or `display:flex` elements that have a defined width, (%, vw, px, etc..). Flexbox is used by default on grid columns, so there are also various flexbox centering methods.
 
 Demo of the Bootstrap 4 Centering Methods
 
