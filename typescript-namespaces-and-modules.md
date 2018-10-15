@@ -1,4 +1,4 @@
-# Namespaces and Modules
+# TypeScript: Namespaces and Modules
 #### Modules
 https://www.typescriptlang.org/docs/handbook/modules.html
 
