@@ -45,7 +45,7 @@ _Test.ts_
 /// <reference path="Validation.ts" />
 /// <reference path="LettersOnlyValidator.ts" />
 
-let validators: { [s: string]: StringValidator; } = {};
+let validators: { [s: string]: Validation.StringValidator; } = {};
 validators["Letters only"] = new Validation.LettersOnlyValidator();
 ```
 
@@ -64,8 +64,8 @@ export interface StringValidator {
 
 _LettersOnlyValidator.ts_
 ```ts
-import { StringValidator } from "./Validation";
 
+import { StringValidator } from "./Validation";
 const lettersRegexp = /^[A-Za-z]+$/;
 
 export class LettersOnlyValidator implements StringValidator {
@@ -77,6 +77,7 @@ export class LettersOnlyValidator implements StringValidator {
 
 _Test.ts_
 ```ts
+import { StringValidator } from "./Validation";
 import { LettersOnlyValidator } from "./LettersOnlyValidator";
 
 let validators: { [s: string]: StringValidator; } = {};
