@@ -12,3 +12,16 @@ https://blog.jimmylv.info/2017-12-24-tech-radar-microfrontends-extending-microse
 
 #### Micro Frontends Proof of Concept
 https://github.com/Pragmatists/microfrontends
+
+
+
+### Single SPA
+
+#### Portal Example
+https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/src/index.html
+
+#### Import Maps
+https://github.com/systemjs/systemjs#import-maps
+
+#### Webpack Config
+https://github.com/joeldenning/systemjs-webpack-interop#checkwebpackconfig
