@@ -1,3 +1,5 @@
+## Articles
+
 #### 一起探討 Micro Frontends 的世界
 https://blog.techbridge.cc/2019/01/12/micro-frontends-concept/
 
@@ -13,9 +15,7 @@ https://blog.jimmylv.info/2017-12-24-tech-radar-microfrontends-extending-microse
 #### Micro Frontends Proof of Concept
 https://github.com/Pragmatists/microfrontends
 
-
-
-### Single SPA
+## Single SPA
 
 #### Portal Example
 https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/src/index.html
@@ -25,3 +25,22 @@ https://github.com/systemjs/systemjs#import-maps
 
 #### Webpack Config
 https://github.com/joeldenning/systemjs-webpack-interop#checkwebpackconfig
+
+```js
+// webpack.config.js
+const systemjsInterop = require("systemjs-webpack-interop");
+
+// Pass in your webpack config, and systemjs-webpack-interop will make it
+// work better with SystemJS
+module.exports = {
+  output: {
+    libraryTarget: "system"
+  },
+  module: {
+    rules: [{ parser: { system: false } }]
+  }
+};
+
+// Throws errors if your webpack config won't interop well with SystemJS
+systemjsInterop.checkWebpackConfig(module.exports);
+```
