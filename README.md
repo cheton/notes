@@ -16,3 +16,6 @@ https://github.com/jlongster/monkey-hot-loader
 
 #### 14 Must Know Chrome Dev Tools Tricks
 https://www.youtube.com/watch?v=xkzDaKwinA8
+
+#### Fullstack JavaScript Developer
+https://ithelp.ithome.com.tw/users/20110371/ironman/1616
