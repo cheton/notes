@@ -6,3 +6,6 @@ http://andy51002000.blogspot.com/2019/07/cloudformation2-auto-scaling-group.html
 
 #### Cloud Formation Example
 https://github.com/cheton/cloud-formation-example
+
+#### k8s workshop pt.0
+https://hackmd.io/@QPF2k-LMR6SQ-qHvUe6lNA/S1Hps_fnB#/
