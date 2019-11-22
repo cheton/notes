@@ -10,5 +10,8 @@ http://andy51002000.blogspot.com/2019/07/cloudformation2-auto-scaling-group.html
 #### Cloud Formation Example
 https://github.com/cheton/cloud-formation-example
 
+#### Terraform 自動化的基礎架構介紹
+https://medium.com/@chihsuan/terraform-%E8%87%AA%E5%8B%95%E5%8C%96%E7%9A%84%E5%9F%BA%E7%A4%8E%E6%9E%B6%E6%A7%8B%E4%BB%8B%E7%B4%B9-f827e8975e98
+
 #### k8s workshop pt.0
 https://hackmd.io/@QPF2k-LMR6SQ-qHvUe6lNA/S1Hps_fnB#/
