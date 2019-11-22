@@ -19,3 +19,6 @@ https://www.youtube.com/watch?v=xkzDaKwinA8
 
 #### Fullstack JavaScript Developer
 https://ithelp.ithome.com.tw/users/20110371/ironman/1616
+https://github.com/eugenechen0514/ithelp-30dayfullstack-Day30/
+https://github.com/eugenechen0514/ithelp-30dayfullstack-Day28-frontend
+https://github.com/eugenechen0514/ithelp-30dayfullstack-Day28-backend
