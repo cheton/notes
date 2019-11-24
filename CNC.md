@@ -4,6 +4,9 @@ https://www.misterngan.com/3232/grbl-diy-mini-drawer-cabinet/
 GRBL – 如何對刀 ( Probing )
 https://www.misterngan.com/3281/grbl-probing-howto/
 
+GRBL – 「遙控」你的 CNC 機
+https://www.misterngan.com/4698/remote-control-your-grbl-cnc-machine-using-cncjs/
+
 GRBL – 我的 CNC 機吸塵大法
 https://www.misterngan.com/4729/grbl-cnc-dust-collection/
 
