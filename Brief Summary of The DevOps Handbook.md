@@ -1,3 +1,5 @@
+Source: https://pdfs.semanticscholar.org/f26a/3bae80d9189054ea9dce9a615cae6f5fad69.pdf
+
 # Brief Summary of The DevOps Handbook
 
 ## Part I - Introduction
@@ -27,15 +29,10 @@ development, enabling fast flow and high quality.
 time) and Percentage Complete and Accurate (%C/A). %C/A reflects the quality of
 the output of each step in our value stream.
 7. The Three ways – the principles underpinning DevOps are
-a. Enable fast left to right flow of work from Dev to Ops to Customer. This is
-done through making work visible, reduce batch sizes, build in quality by
-preventing defects and constantly optimize for global goals.
-b. Enable fast and constant flow of feedback from left to right at all stages of
-the value stream. By seeing problems as, they occur, swarming them until
-effective counter measures, feedback loops are shortened and amplified. 
-c. The Third way enables creation of a generative high trust culture that
-supports a dynamic, disciplined and scientific approach to experimentation
-and risk taking.
+a. Enable fast left to right flow of work from Dev to Ops to Customer. This is done through making work visible, reduce batch sizes, build in quality by preventing defects and constantly optimize for global goals.
+b. Enable fast and constant flow of feedback from left to right at all stages of the value stream. By seeing problems as, they occur, swarming them until effective counter measures, feedback loops are shortened and amplified.
+c. The Third way enables creation of a generative high trust culture that supports a dynamic, disciplined and scientific approach to experimentation and risk taking.
+    
 ### Chapter 2 – The First way: The Principles of Flow
 1. We increase flow by making work visible, by reducing batch sizes, and intervals of
 work and by building quality in, preventing defects from being passed to
@@ -786,7 +783,7 @@ and experience and each one helps the other in case of any problems.
 7. Create well defined Operations User stories that represents work activities that can
 be reused across all projects. This would enable better planning and more
 repeatable outcomes.
-### Chapter 21 Reserve Time to Create Organizational Learning and Improvement
+### Chapter 21 – Reserve Time to Create Organizational Learning and Improvement
 1. Toyota Production System followed the Improvement Blitz (Kaizen Blitz) which is
 defined as a dedicated and concentrated period of time to address a particular issue
 over the course of several days. The output of the team is often a new approach to
