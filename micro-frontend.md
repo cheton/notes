@@ -1,8 +1,8 @@
 ## Articles
 
 ### Micro-frontend Architecture in Action-微前端的那些事儿 
-https://microfrontends.cn/
-https://github.com/phodal/microfrontends
+* https://microfrontends.cn/
+* https://github.com/phodal/microfrontends
 
 #### 一起探討 Micro Frontends 的世界
 https://blog.techbridge.cc/2019/01/12/micro-frontends-concept/
