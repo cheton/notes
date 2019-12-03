@@ -6,3 +6,6 @@ https://medium.com/@jeffreyrussom/react-continuous-deployments-with-aws-codepipe
 
 #### Deploy and host a ReactJS app with AWS Amplify Console
 https://aws.amazon.com/getting-started/tutorials/deploy-react-app-cicd-amplify/
+
+### How to deploy your React App with AWS S3
+https://medium.com/dailyjs/a-guide-to-deploying-your-react-app-with-aws-s3-including-https-a-custom-domain-a-cdn-and-58245251f081
