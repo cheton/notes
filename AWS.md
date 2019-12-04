@@ -12,3 +12,7 @@ https://medium.com/dailyjs/a-guide-to-deploying-your-react-app-with-aws-s3-inclu
 
 #### CloudFront Design Patterns And Best Practices
 https://www.abhishek-tiwari.com/cloudfront-design-patterns-and-best-practices/
+
+
+### Terraform Recommended Practices
+https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html
