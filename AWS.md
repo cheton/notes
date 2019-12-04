@@ -9,3 +9,6 @@ https://aws.amazon.com/getting-started/tutorials/deploy-react-app-cicd-amplify/
 
 #### How to deploy your React App with AWS S3
 https://medium.com/dailyjs/a-guide-to-deploying-your-react-app-with-aws-s3-including-https-a-custom-domain-a-cdn-and-58245251f081
+
+#### CloudFront Design Patterns And Best Practices
+https://www.abhishek-tiwari.com/cloudfront-design-patterns-and-best-practices/
