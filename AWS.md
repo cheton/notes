@@ -15,3 +15,6 @@ https://www.abhishek-tiwari.com/cloudfront-design-patterns-and-best-practices/
 
 #### Terraform Recommended Practices
 https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html
+
+#### Use Slack ChatOps to Deploy Your Code – How to Integrate Your Pipeline in AWS CodePipeline with Your Slack Channel
+https://aws.amazon.com/tw/blogs/devops/use-slack-chatops-to-deploy-your-code-how-to-integrate-your-pipeline-in-aws-codepipeline-with-your-slack-channel/
