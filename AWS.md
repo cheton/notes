@@ -18,3 +18,19 @@ https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html
 
 #### Use Slack ChatOps to Deploy Your Code – How to Integrate Your Pipeline in AWS CodePipeline with Your Slack Channel
 https://aws.amazon.com/tw/blogs/devops/use-slack-chatops-to-deploy-your-code-how-to-integrate-your-pipeline-in-aws-codepipeline-with-your-slack-channel/
+
+
+#### How to make CloudFront never cache index.html on S3 bucket
+https://stackoverflow.com/questions/45727454/how-to-make-cloudfront-never-cache-index-html-on-s3-bucket
+
+A solution based on CloudFront configuration:
+
+Go to your CloudFront distribution, under the "Behavior" tab and create a new behavior. Specify the following values:
+
+Path Pattern: index.html
+Object Caching: customize
+Maximum TTL: 0 (or another very small value)
+Default TTL: 0 (or another very small value)
+Save this configuration.
+
+CloudFront will not cache index.html anymore.
