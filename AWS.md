@@ -1,3 +1,6 @@
+#### Free Private NPM with Verdaccio and AWS
+https://medium.com/@odahcam/free-private-npm-with-verdaccio-and-aws-a88e6f0f4beb
+
 #### Automate Static Site Deployment on S3 with AWS CodeBuild
 https://medium.com/@hzburki.hzb/automate-static-site-deployment-on-s3-with-aws-codebuild-8b2546a360df
 
