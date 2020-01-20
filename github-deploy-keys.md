@@ -1,13 +1,5 @@
 https://github.com/alrra/travis-scripts/blob/master/docs/github-deploy-keys.md
 
-## Mac
-
-```
-sudo xcode-select --switch /Library/Developer/CommandLineTools
-gem install travis
-sudo xcode-select --switch /Applications/Xcode.app
-```
-
 # Set up the SSH keys
 
 #### 1. Enable Travis CI
