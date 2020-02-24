@@ -1,3 +1,6 @@
+#### How to Build a Serverless App with S3 and Lambda in 15 Minutes
+https://itnext.io/how-to-build-a-serverless-app-with-s3-and-lambda-in-15-minutes-b14eecd4ea89
+
 #### Free Private NPM with Verdaccio and AWS
 https://medium.com/@odahcam/free-private-npm-with-verdaccio-and-aws-a88e6f0f4beb
 
