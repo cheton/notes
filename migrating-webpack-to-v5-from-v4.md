@@ -21,6 +21,8 @@ this.process = Object.assign({}, this.process, { env: {} });
 
 ### `resolve.fallback`
 
+If you are using `node.something: 'empty'` replace it with `resolve.fallback.something: false`.
+
 ```js
 { // webpack.config.js
   resolve: {
