@@ -26,11 +26,11 @@ this.process = Object.assign({}, this.process, { env: {} });
   resolve: {
     fallback: {
       fs: false,
-      net: 'empty',
+      net: false,
       path: require.resolve('path-browserify'),
       stream: require.resolve('stream-browserify'),
       timers: require.resolve('timers-browserify'),
-      tls: 'empty',
+      tls: false,
     },
   },
 }
